@@ -1,0 +1,9 @@
+# WebStorm
+.idea
+
+# Modules
+node_modules
+
+# Environments
+.env
+.env.test

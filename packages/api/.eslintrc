@@ -1,0 +1,36 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "rules": {
+    "vars-on-top": "error",
+    "no-param-reassign": "error",
+    "comma-dangle": [2, "always-multiline"],
+    "no-console": "error",
+    "no-undef": "error",
+    "max-lines": ["error", 200],
+    "max-len": ["error", 120],
+    "max-lines-per-function": ["error", { "max": 25 }],
+    "max-depth": ["error", { "max": 2 }],
+    "strict": ["error", "never"],
+    "newline-after-var": ["error", "always"],
+    "curly": ["error", "all"],
+    "no-magic-numbers": ["error", { "ignore": [0] }],
+    "prefer-const": "error"
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "xdescribe": true,
+    "xit": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}

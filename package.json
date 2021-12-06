@@ -1,0 +1,18 @@
+{
+  "name": "toteem",
+  "version": "1.0.0",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "description": "Toteem",
+  "author": "Toteem",
+  "engines": {
+    "node": "17.1.0",
+    "npm": "8.1.2"
+  },
+  "scripts": {
+    "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
+    "start": "npm start --workspace=$PACKAGE_NAME",
+    "build": "npm run build --workspace=$PACKAGE_NAME"
+  }
+}
