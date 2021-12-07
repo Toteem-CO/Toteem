@@ -9,12 +9,14 @@
   },
   "main": "src/index.js",
   "scripts": {
-
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
 
   },
   "devDependencies": {
-
+    "nuxt3": "latest"
   }
 }
