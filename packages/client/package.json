@@ -13,10 +13,8 @@
     "build": "nuxi build",
     "start": "node .output/server/index.mjs"
   },
-  "dependencies": {
-
-  },
   "devDependencies": {
+    "nuxt-windicss": "^2.1.1",
     "nuxt3": "latest"
   }
 }
