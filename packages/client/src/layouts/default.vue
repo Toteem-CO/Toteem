@@ -20,10 +20,7 @@
 </template>
 
 <script>
-  import TheLeftMenu from '~/components/shared/TheLeftMenu';
-
   export default {
-    components: { TheLeftMenu }
   }
 </script>
 
