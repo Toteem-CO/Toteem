@@ -1,26 +1,24 @@
 require('dotenv').config();
 
+const http2 = require('http2');
+const { readFileSync } = require('fs');
 const Koa = require('koa');
 const Router = require('@koa/router');
 
 const app = new Koa();
 const router = new Router();
 
+const cert = readFileSync('./cert.pem');
+const key = readFileSync('./key.pem');
 
-app.use(async (ctx, next) => {
-  const start = new Date();
-  await next();
-  console.log(`Request Processed In ${new Date() - start}`);
+app.use(ctx => {
+  ctx.body = 'Hello Toteem';
 });
 
-router.get('/', (ctx, next) => {
-  ctx.body = 'Hello World!';
-});
-
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-app.listen(3000);
+http2.createSecureServer({
+  key,
+  cert,
+}, app.callback()).listen(443);
 
 module.exports = {
   app,

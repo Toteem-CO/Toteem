@@ -1,6 +1,6 @@
 <template>
   <section>
-    Tableau de bord
+    Campagne annuelle
   </section>
 </template>
 

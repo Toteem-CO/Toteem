@@ -1,6 +1,6 @@
 <template>
   <section>
-    Tableau de bord
+    Gérer mon épargne
   </section>
 </template>
 

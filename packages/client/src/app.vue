@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="toteem-app">
     <NuxtPage/>
   </section>
 </template>
