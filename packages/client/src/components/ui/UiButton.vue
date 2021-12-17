@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-button-component">
+  <div class="ui-button-component my-1">
     <button :class="classBinding">{{ text }}</button>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
         'outline-none': true,
         'focus:outline-none': true,
         'p-2': true,
+        'py-0.6rem': true,
         'w-full': true,
         'text-textSecondary': !this.isActive,
         'text-background': this.isActive,

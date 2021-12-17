@@ -1,5 +1,5 @@
 <template>
-  <section class="shared-left-menu-component p-8">
+  <section class="shared-left-menu-component p-8 h-full flex flex-col">
 
     <!-- LOGO -->
     <div class="mb-12">
@@ -7,7 +7,7 @@
     </div>
 
     <!-- MAIN MENU -->
-    <div>
+    <div class="flex-1">
       <NuxtLink to="/"><UiButton text="Tableau de bord" :isActive="isActive('index')" /></NuxtLink>
       <NuxtLink to="/manage"><UiButton text="Gérer mon épargne" :isActive="isActive('manage')" /></NuxtLink>
       <NuxtLink to="/campaign"><UiButton text="Campagne annuelle" :isActive="isActive('campaign')" /></NuxtLink>
@@ -15,6 +15,9 @@
 
     <!-- SECONDARY MENU -->
     <div>
+      <div class="font-bold text-textSecondary text-sm border-t-1 border-t-textSecondary border-opacity-25 py-4">
+        Suivre
+      </div>
       <NuxtLink to="/operations"><UiButton text="Mes opérations" :isActive="isActive('operations')" /></NuxtLink>
       <NuxtLink to="/plan"><UiButton text="Mon dispositif" :isActive="isActive('plan')" /></NuxtLink>
     </div>
