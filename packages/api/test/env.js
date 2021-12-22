@@ -1,4 +1,4 @@
-const path = require('path');
+import * as path from 'path';
 
 if (!process.env.HEROKU_CI) {
   const loadedEnv = require('dotenv').config({ path: path.resolve(process.cwd(), '.env.test') });
