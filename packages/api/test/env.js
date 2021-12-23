@@ -1,10 +1,14 @@
-import * as path from 'path';
+import env from 'dotenv';
+import path from 'path';
+
+import logger from '@toteem/shared/logger';
 
 if (!process.env.HEROKU_CI) {
-  const loadedEnv = require('dotenv').config({ path: path.resolve(process.cwd(), '.env.test') });
+  const errorCode = 1;
+  const loadedEnv = env.config({ path: path.resolve(process.cwd(), '.env.test') });
 
   if (loadedEnv.error) {
-    console.error(loadedEnv.error);
-    process.exit(1);
+    await logger.error(loadedEnv.error);
+    process.exit(errorCode);
   }
 }

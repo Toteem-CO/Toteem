@@ -11,11 +11,11 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run test:mocha && npm run test:eslint && npm run test:prettier",
-    "test:mocha": "mocha --recursive --exit --require ./test/env.js",
+    "test:mocha": "mocha --experimental-specifier-resolution=node --recursive --exit --require ./test/env.js",
     "test:eslint": "eslint .",
     "test:prettier": "prettier --check .",
-    "start": "node src/index.js",
-    "dev": "nodemon npm start"
+    "start": "node --experimental-specifier-resolution=node src/index.js",
+    "dev": "nodemon --experimental-specifier-resolution=node src/index.js"
   },
   "dependencies": {
     "@koa/router": "10.1.1",

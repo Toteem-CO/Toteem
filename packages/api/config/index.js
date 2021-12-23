@@ -1,4 +1,4 @@
-export default {
+export const __Config = {
   PORT: parseInt(process.env.PORT, 10),
   NODE_ENV: process.env.NODE_ENV,
   MONGO_URI: process.env.MONGO_URI,
