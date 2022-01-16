@@ -16,5 +16,8 @@
   "devDependencies": {
     "nuxt-windicss": "^2.1.1",
     "nuxt3": "latest"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }

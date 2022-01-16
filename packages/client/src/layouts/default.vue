@@ -20,7 +20,24 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
+    async beforeMount() {
+      try {
+        const apiUrl = this.$config.API_URL;
+        const token = document.cookie.split('toteemToken=').pop();
+        const response = await axios.get(`${apiUrl}/users/me`, { headers: { 'X-Toteem-Access-Token': token } });
+
+        if (response.data.message !== 'Ok') {
+          this.$router.push('/signin');
+        }
+
+      } catch (e) {
+        this.$router.push('/signin');
+      }
+    }
+
   }
 </script>
 

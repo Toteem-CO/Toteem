@@ -18,6 +18,7 @@
     "dev": "nodemon --experimental-specifier-resolution=node src/index.js"
   },
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "@koa/router": "10.1.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",

@@ -3,6 +3,7 @@ import {} from '@toteem/shared/env-loader';
 import { __Config } from '../config';
 
 import Koa from 'koa';
+import cors from '@koa/cors';
 
 import logger from '@toteem/shared/logger';
 import { MongoDB } from './database/MongoDB';
@@ -14,6 +15,7 @@ const app = new Koa();
 await MongoDB.connect();
 
 app.use(CatchErrors);
+app.use(cors());
 app.use(ApiRouter.routes());
 
 app.listen(__Config.PORT, async () => {
