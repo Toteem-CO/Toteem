@@ -36,7 +36,8 @@ export const UsersController = {
     const expirationDate = new Date(new Date().setDate(new Date().getDate() + __Config.JSONWEBTOKEN_DURATION_IN_DAYS));
     const msToS = 1000;
     const expiresIn = Math.floor((expirationDate - new Date()) / msToS);
-    const token = jwt.sign({ email }, __Config.JSONWEBTOKEN_SECRET, { expiresIn });
+    const createdAt = new Date().toISOString();
+    const token = jwt.sign({ email, createdAt }, __Config.JSONWEBTOKEN_SECRET, { expiresIn });
 
     if (!foundUser) {
       CtxResponder(ctx, __HttpCodes.FORBIDDEN, 'Forbidden');
