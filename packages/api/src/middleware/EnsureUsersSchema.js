@@ -4,7 +4,7 @@ import { CtxResponder } from '../utils/CtxResponder';
 
 export const EnsureUsersSchema = async function (ctx, next) {
   try {
-    await UsersSchema.validateAsync(ctx.request.body);
+    ctx.state.userPayload = await UsersSchema.validateAsync(ctx.request.body);
   } catch (e) {
     return CtxResponder(ctx, __HttpCodes.BAD_REQUEST, 'Does Not Match Users Schema');
   }

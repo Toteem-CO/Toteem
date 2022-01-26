@@ -16,13 +16,13 @@ export const UsersController = {
   },
 
   async createUser(ctx) {
-    const { email, password } = ctx.request.body;
+    const { email, password } = ctx.state.userPayload;
     const hash = bcrypt.hashSync(password, __Config.BCRYPT_COST);
     const db = await MongoDB.getDatabase();
     const foundUser = await db.collection('users').findOne({ email });
 
     if (!foundUser) {
-      await db.collection('users').insertOne({ email, password: hash });
+      await db.collection('users').insertOne({ ...ctx.state.userPayload, password: hash });
       CtxResponder(ctx, __HttpCodes.CREATED, 'User Successfully Created');
     } else {
       CtxResponder(ctx, __HttpCodes.UNPROCESSABLE_ENTITY, 'Unable To Create User');
