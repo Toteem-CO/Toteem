@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { __HttpCodes } from '@toteem/shared/constants';
+import { __HttpCodes, __Roles } from '@toteem/shared/constants';
 import { __Config } from '../../../config';
 import { MongoDB } from '../../database/MongoDB';
 import { CtxResponder } from '../../utils/CtxResponder';
@@ -12,6 +12,8 @@ export const UsersController = {
 
     delete currentUser._id;
     delete currentUser.password;
+    currentUser.hasAccessToAdmin = currentUser.role !== __Roles.USER;
+    delete currentUser.role;
     CtxResponder(ctx, __HttpCodes.OK, 'Ok', currentUser);
   },
 

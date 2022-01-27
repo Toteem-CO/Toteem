@@ -7,7 +7,7 @@
     </section>
 
     <!-- TOP HEADER -->
-    <section class="col-start-2 row-start-1 col-span-1 row-span-1 bg-background z-40 overflow-hidden">
+    <section class="col-start-2 row-start-1 col-span-1 row-span-1 bg-background z-40 overflow-visible">
       <SharedTopMenu />
     </section>
 
@@ -29,11 +29,24 @@
         const apiUrl = this.$config.API_URL;
         const token = document.cookie.split('toteemToken=').pop();
         const response = await axios.get(`${apiUrl}/users/me`, { headers: { 'X-Toteem-Access-Token': token } });
+        const requestedView = this.$route.query.view;
+        const hasAccessToAdmin = response.data.data.hasAccessToAdmin;
+        let view = requestedView;
+
+        if (!['user', 'admin'].includes(requestedView)) {
+          view = 'user';
+        } else if (view === 'admin' && !hasAccessToAdmin) {
+          view = 'user';
+        }
 
         if (response.data.message !== 'Ok') {
           this.$router.push('/signin');
         } else {
           this.store.setCurrentUserFirstName({ firstName: response.data.data.firstName });
+          this.store.setCurrentUserView({ view });
+          this.store.setCurrentUserHasAccessToAdmin({ hasAccessToAdmin });
+          console.log(this.store.getCurrentUserView);
+          this.$router.push({ query: { view } });
         }
 
       } catch (e) {
