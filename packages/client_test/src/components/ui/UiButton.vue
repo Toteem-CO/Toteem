@@ -1,14 +1,12 @@
 <template>
-  <div class="ui-button-component my-1">
-    <button :class="classBinding">
-      <div>
-        <slot/>
-      </div>
-      <div>
-        {{ text }}
-      </div>
-    </button>
-  </div>
+  <button :class="classBinding">
+    <div>
+      <slot/>
+    </div>
+    <div>
+      {{ text }}
+    </div>
+  </button>
 </template>
 
 <script>
@@ -30,17 +28,13 @@ export default {
         'flex': true,
         'flex-row': true,
         'items-center': true,
-        'bg-violet-50': this.isActive,
-        'bg-background': !this.isActive,
-        'text-gray-600': this.isActive,
-        'rounded-md': true,
+        'bg-[#edecfa]': this.isActive,
+        //'text-neutral-50': this.isActive,
         'outline-none': true,
         'focus:outline-none': true,
-        'px-1.5': true,
-        'py-2': true,
+        //'px-1.5': true,
+        'py-2.5': true,
         'w-full': true,
-        'text-textSecondary': !this.isActive,
-        'text-background': this.isActive,
         'font-medium': true,
         'text-left': true
       };

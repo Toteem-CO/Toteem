@@ -12,7 +12,7 @@
     </section>
 
     <!-- CONTENT -->
-    <section class="col-start-2 row-start-2 col-span-1 row-span-2 bg-background pt-2rem">
+    <section class="col-start-2 row-start-1 col-span-1 row-span-2 bg-background pt-2rem">
       <slot />
     </section>
 

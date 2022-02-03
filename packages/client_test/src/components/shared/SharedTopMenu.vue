@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-row h-full w-full py-4 px-4 items-center justify-center">
+  <section class="flex flex-row h-full w-full py-4 px-8 items-center justify-center">
 
     <!-- LEFT PART -->
     <div class="flex flex-row flex-1 items-center justify-end">
@@ -18,7 +18,7 @@
       <Popover class="relative">
         <PopoverButton class="flex flex-row items-center">
           <div class="font-semibold">{{ firstName }}</div>
-          <div class="px-2"><ChevronDownIcon class="w-5 h-5" /></div>
+          <div class="pl-2"><ChevronDownIcon class="w-5 h-5" /></div>
         </PopoverButton>
 
         <PopoverPanel class="absolute z-50 flex flex-col right-0 top-10 bg-gray-50 rounded-lg shadow-[0_0_12px_-2px_rgb(0,0,0,0.25)] ring-black ring-opacity-5 w-72">
