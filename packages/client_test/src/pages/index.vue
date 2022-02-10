@@ -3,14 +3,12 @@
     <h1 class="text-3xl font-medium text-gray-700">Tableau de bord</h1>
     <h2 class="mb-8">Bienvenue sur le tableau de bord de votre espace entreprise {{ firstName }} ! 🎉</h2>
 
-
-    <div class="p-2 shadow-xl rounded-xl bg-white">
-      <h3 class="flex items-center">
-        <CurrencyEuroIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        <span>Synthèse Financière</span>
+    <div class="shadow-xl rounded-xl bg-white mb-8">
+      <h3 class="p-2 flex items-center bg-[#edecfa] rounded-t-xl items-center justify-center">
+        <span class="text-lg font-medium text-gray-900">💰 Synthèse Financière</span>
       </h3>
-      <div>
-        <h4>Montant des encours : {{ totalAmount }} €</h4>
+      <div class="p-4">
+        <h4 class="text-gray-800 mb-4 pb-4 border-b border-gray-200 font-medium">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
         <div class="flex items-start justify-between">
           <div>
             <DoughnutChart :chartData="doughnutBySources" :options="doughnutBySourcesOptions" height="200" />
@@ -23,13 +21,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="shadow-xl rounded-xl bg-white">
+      <h3 class="p-2 flex items-center bg-[#edecfa] rounded-t-xl items-center justify-center">
+        <span class="text-lg font-medium text-gray-700">💖 Abondement Annuel</span>
+      </h3>
       <div>
-        <h4>Abondement annuel</h4>
         <div>
           <BarChart :chartData="contributionChart" :options="contributionChartOptions"  />
         </div>
       </div>
     </div>
+
   </section>
 </template>
 
@@ -96,7 +100,7 @@
             },
             title: {
               display: true,
-              text: "Par source de versement",
+              text: "Par Source",
             },
           },
         },
@@ -119,7 +123,7 @@
             },
             title: {
               display: true,
-              text: "Par projet",
+              text: "Par Projet",
             },
           },
         },
@@ -145,7 +149,7 @@
             },
             title: {
               display: true,
-              text: "Par thématique d'investissement",
+              text: "Par Thématique",
             },
           },
         }
