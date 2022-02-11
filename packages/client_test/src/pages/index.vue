@@ -3,33 +3,33 @@
     <h1 class="text-3xl font-medium text-gray-700">Tableau de bord</h1>
     <h2 class="mb-8">Bienvenue sur le tableau de bord de votre espace entreprise {{ firstName }} ! 🎉</h2>
 
-    <div class="shadow-xl rounded-xl bg-white mb-8">
-      <h3 class="p-2 flex items-center bg-[#edecfa] rounded-t-xl items-center justify-center">
+    <div class="shadow-lg rounded-lg bg-white mb-8">
+      <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
         <span class="text-lg font-medium text-gray-900">💰 Synthèse Financière</span>
       </h3>
       <div class="p-4">
-        <h4 class="text-gray-800 mb-4 pb-4 border-b border-gray-200 font-medium">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
+        <h4 class="text-gray-800 mb-4 pb-4 border-b-2 border-gray-100 font-medium text-lg">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
         <div class="flex items-start justify-between">
           <div>
-            <DoughnutChart :chartData="doughnutBySources" :options="doughnutBySourcesOptions" height="200" />
+            <DoughnutChart :chartData="doughnutBySources" :options="doughnutBySourcesOptions" :height="200" />
           </div>
           <div>
-            <DoughnutChart :chartData="doughnutByProjects" :options="doughnutByProjectsOptions" height="180" />
+            <DoughnutChart :chartData="doughnutByProjects" :options="doughnutByProjectsOptions" :height="180" />
           </div>
           <div>
-            <DoughnutChart :chartData="doughnutByThemes" :options="doughnutByThemesOptions" height="200" />
+            <DoughnutChart :chartData="doughnutByThemes" :options="doughnutByThemesOptions" :height="200" />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="shadow-xl rounded-xl bg-white">
-      <h3 class="p-2 flex items-center bg-[#edecfa] rounded-t-xl items-center justify-center">
+    <div class="shadow-lg rounded-lg bg-white">
+      <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
         <span class="text-lg font-medium text-gray-700">💖 Abondement Annuel</span>
       </h3>
       <div>
         <div>
-          <BarChart :chartData="contributionChart" :options="contributionChartOptions"  />
+          <BarChart :chartData="contributionChart" :options="contributionChartOptions"  :height="50" />
         </div>
       </div>
     </div>
@@ -58,20 +58,65 @@
         contributionChart: {
           labels: [''],
           datasets: [{
-            axis: 'y',
-            data: [80],
-            base: 0,
-            barPercentage: 1,
-            fill: true,
+            label: '',
+            data: [8000],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
+              'rgba(90, 79, 207, 1)',
             ],
-          }]
+            hoverBackgroundColor: [
+              'rgba(90, 79, 207, 1)',
+            ],
+          },
+            {
+              label: '',
+              data: [10000],
+              backgroundColor: [
+                'rgba(179, 175, 227, 1)',
+              ],
+              hoverBackgroundColor: [
+                'rgba(179, 175, 227, 1)',
+              ],
+            }]
         },
         contributionChartOptions: {
           indexAxis: 'y',
+          layout: {
+            autoPadding: false,
+            padding: 0,
+          },
           scale: {
-            max: 100,
+            max: 10000,
+          },
+          scales: {
+            x: {
+              display: false,
+              stacked: true,
+              ticks: {
+                display: false,
+                padding: 0,
+              },
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              display: false,
+              stacked: true,
+              ticks: {
+                padding: 0,
+              },
+              grid: {
+                display: false,
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              enabled: false,
+            }
           }
         },
         doughnutBySources: {
@@ -161,7 +206,7 @@
         return this.store.getCurrentUserFirstName;
       },
       totalAmount() {
-        return 1246554.12
+        return 1246554.12.toLocaleString('fr-FR');
       }
     },
 
