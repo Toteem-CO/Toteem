@@ -27,9 +27,13 @@
       <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
         <span class="text-lg font-medium text-gray-700">💖 Abondement Annuel</span>
       </h3>
-      <div>
+      <div class="p-6">
         <div>
           <BarChart :chartData="contributionChart" :options="contributionChartOptions"  :height="50" />
+        </div>
+        <div class="flex items-center flex-row font-semibold mt-2">
+          <div class="flex-1"><span class="text-[#5a4fcf]">Versé :</span> {{ currentContribution }} €</div>
+          <div><span class="text-[#b3afe3]">Max :</span> {{ maxContribution }} €</div>
         </div>
       </div>
     </div>
@@ -66,16 +70,20 @@
             hoverBackgroundColor: [
               'rgba(90, 79, 207, 1)',
             ],
+            borderRadius: { topLeft: 8, topRight: 0, bottomLeft: 8, bottomRight: 0 },
+            borderSkipped: false,
           },
             {
               label: '',
-              data: [10000],
+              data: [2000],
               backgroundColor: [
                 'rgba(179, 175, 227, 1)',
               ],
               hoverBackgroundColor: [
                 'rgba(179, 175, 227, 1)',
               ],
+              borderRadius: { topLeft: 0, topRight: 8, bottomLeft: 0, bottomRight: 8 },
+              borderSkipped: false,
             }]
         },
         contributionChartOptions: {
@@ -207,7 +215,13 @@
       },
       totalAmount() {
         return 1246554.12.toLocaleString('fr-FR');
-      }
+      },
+      maxContribution() {
+        return 10000.00.toLocaleString('fr-FR');
+      },
+      currentContribution() {
+        return 8000.00.toLocaleString('fr-FR');
+      },
     },
 
     methods: {
