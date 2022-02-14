@@ -7,11 +7,18 @@
       <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
         <span class="text-lg font-medium text-gray-900">💰 Synthèse Financière</span>
       </h3>
-      <div class="p-4">
-        <h4 class="text-gray-800 mb-4 pb-4 border-b-2 border-gray-100 font-medium text-lg">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
+      <div class="p-6">
+        <h4 class="text-gray-800 mb-6 pb-6 border-b-2 border-gray-100 font-medium text-lg">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
         <div class="flex items-start justify-between">
-          <div>
-            <DoughnutChart :chartData="doughnutBySources" :options="doughnutBySourcesOptions" :height="200" />
+          <div class="w-80">
+            <DoughnutChart class="flex justify-center" :chartData="doughnutBySources" :options="doughnutBySourcesOptions" :height="200" :width="200" />
+            <div class="flex flex-wrap items-center justify-center text-xs pt-2">
+              <div class="flex items-center justify-center px-2"><div class="bg-[#5a4fcf] w-6 h-2.5 mr-1 border border-gray-200"></div>Participation</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#b3afe3] w-6 h-2.5 mr-1 border border-gray-200"></div>Interessement</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#ede9fe] w-6 h-2.5 mr-1 border border-gray-200"></div>Abondement</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#f5f3ff] w-6 h-2.5 mr-1 border border-gray-200"></div>Performance</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#f9fafb] w-6 h-2.5 mr-1 border border-gray-200"></div>Versements Volontaires</div>
+            </div>
           </div>
           <div>
             <DoughnutChart :chartData="doughnutByProjects" :options="doughnutByProjectsOptions" :height="180" />
@@ -131,25 +138,36 @@
           labels:
             ['Participation', 'Interessement', 'Abondement', 'Performance', 'Versements Volontaires'],
           datasets: [{
-          data: [1000, 2000, 500, 200, 1000],
+          data: [2000, 1000, 1000, 500, 200],
             backgroundColor: [
-              "#77CEFF",
-              "#0079AF",
-              "#123E6B",
-              "#97B0C4",
-              "#A5C8ED",
+              "#5a4fcf",
+              "#b3afe3",
+              "#ede9fe",
+              "#f5f3ff",
+              "#f9fafb",
             ],
+            hoverBackgroundColor: [
+              "#5a4fcf",
+              "#b3afe3",
+              "#ede9fe",
+              "#f5f3ff",
+              "#f9fafb",
+            ]
           }]
         },
         doughnutBySourcesOptions: {
+          responsive: false,
           plugins: {
-            legend: {
-              position: 'bottom',
-              fullSize: false,
-              labels: {
-                textAlign: 'left',
-                boxWidth: 20
+            tooltip: {
+              displayColors: false,
+              padding: 10,
+              boxPadding: 5,
+              callbacks: {
+                label: (ctx) => `${ctx.label} : ${ctx.parsed.toLocaleString('fr-FR')} €`,
               }
+            },
+            legend: {
+              display: false,
             },
             title: {
               display: true,
