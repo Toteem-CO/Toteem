@@ -4,11 +4,14 @@
     <h2 class="mb-8">Bienvenue sur le tableau de bord de votre espace entreprise {{ firstName }} ! 🎉</h2>
 
     <div class="shadow-lg rounded-lg bg-white mb-8">
-      <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
-        <span class="text-lg font-medium text-gray-900">💰 Synthèse Financière</span>
+      <h3 class="px-6 py-2 flex rounded-t-lg items-center justify-start text-lg text-[#5a4fcf] border-b border-gray-100">
+        <div class="pt-0.5"><PresentationChartLineIcon aria-hidden="true" class="w-5 h-5 mr-1" /></div><div class="">Synthèse Financière</div>
       </h3>
       <div class="p-6">
-        <h4 class="text-gray-800 mb-6 pb-6 border-b-2 border-gray-100 font-medium text-lg">Montant des encours : <span class="font-bold text-[#5a4fcf]">{{ totalAmount }} €</span></h4>
+        <h4 class="text-gray-800 mb-6 flex flex-col items-center justify-center">
+          <div class="font-medium text-3xl text-[#5a4fcf]">{{ totalAmount }} €</div>
+          <div class="text-sm italic">Encours Totaux</div>
+        </h4>
         <div class="flex items-start justify-between">
           <div class="w-80">
             <DoughnutChart class="flex justify-center" :chartData="doughnutBySources" :options="doughnutBySourcesOptions" :height="200" :width="200" />
@@ -20,19 +23,30 @@
               <div class="flex items-center justify-center px-2"><div class="bg-[#f9fafb] w-6 h-2.5 mr-1 border border-gray-200"></div>Versements Volontaires</div>
             </div>
           </div>
-          <div>
-            <DoughnutChart :chartData="doughnutByProjects" :options="doughnutByProjectsOptions" :height="180" />
+          <div class="w-80">
+            <DoughnutChart class="flex justify-center" :chartData="doughnutByProjects" :options="doughnutByProjectsOptions" :height="200" :width="200" />
+            <div class="flex flex-wrap items-center justify-center text-xs pt-2">
+              <div class="flex items-center justify-center px-2"><div class="bg-[#5a4fcf] w-6 h-2.5 mr-1 border border-gray-200"></div>Projet Personnel</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#b3afe3] w-6 h-2.5 mr-1 border border-gray-200"></div>Retraite</div>
+            </div>
           </div>
-          <div>
-            <DoughnutChart :chartData="doughnutByThemes" :options="doughnutByThemesOptions" :height="200" />
+          <div class="w-80">
+            <DoughnutChart class="flex justify-center" :chartData="doughnutByThemes" :options="doughnutByThemesOptions" :height="200" :width="200" />
+            <div class="flex flex-wrap items-center justify-center text-xs pt-2">
+              <div class="flex items-center justify-center px-2"><div class="bg-[#5a4fcf] w-6 h-2.5 mr-1 border border-gray-200"></div>Environement</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#b3afe3] w-6 h-2.5 mr-1 border border-gray-200"></div>Social</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#ede9fe] w-6 h-2.5 mr-1 border border-gray-200"></div>Innovation</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#f5f3ff] w-6 h-2.5 mr-1 border border-gray-200"></div>Immobilier</div>
+              <div class="flex items-center justify-center px-2"><div class="bg-[#f9fafb] w-6 h-2.5 mr-1 border border-gray-200"></div>Arts</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="shadow-lg rounded-lg bg-white">
-      <h3 class="p-2 flex items-center bg-violet-50 rounded-t-lg items-center justify-center">
-        <span class="text-lg font-medium text-gray-700">💖 Abondement Annuel</span>
+      <h3 class="px-6 py-2 flex rounded-t-lg items-center justify-start text-lg text-[#5a4fcf] border-b border-gray-100">
+        <div class="pt-0.5"><HeartIcon aria-hidden="true" class="w-5 h-5 mr-1" /></div><div class="">Abondement Annuel</div>
       </h3>
       <div class="p-6">
         <div>
@@ -49,7 +63,7 @@
 </template>
 
 <script>
-  import { CurrencyEuroIcon } from '@heroicons/vue/outline';
+  import { PresentationChartLineIcon, HeartIcon } from '@heroicons/vue/outline';
   import { DoughnutChart, BarChart } from "vue-chart-3";
   import { Chart, registerables } from 'chart.js';
   import { useUsersStore } from '~/stores/users';
@@ -57,7 +71,7 @@
   Chart.register(...registerables);
 
   export default {
-    components: { DoughnutChart, BarChart, CurrencyEuroIcon },
+    components: { DoughnutChart, BarChart, PresentationChartLineIcon, HeartIcon },
 
     mounted () {
       //this.fillData();
@@ -177,20 +191,31 @@
         },
         doughnutByProjects: {
           labels:
-            ['Retraite', 'Projet Personnel'],
+            ['Projet Personnel', 'Retraite'],
           datasets: [{
-            data: [1000, 2000],
+            data: [2000, 1000],
             backgroundColor: [
-              "#77CEFF",
-              "#0079AF",
+              "#5a4fcf",
+              "#b3afe3",
+            ],
+            hoverBackgroundColor: [
+              "#5a4fcf",
+              "#b3afe3",
             ],
           }]
         },
         doughnutByProjectsOptions: {
           plugins: {
+            tooltip: {
+              displayColors: false,
+              padding: 10,
+              boxPadding: 5,
+              callbacks: {
+                label: (ctx) => `${ctx.label} : ${ctx.parsed.toLocaleString('fr-FR')} €`,
+              }
+            },
             legend: {
-              fullSize: false,
-              position: 'bottom',
+              display: false,
             },
             title: {
               display: true,
@@ -202,21 +227,35 @@
           labels:
             ['Environement', 'Social', 'Innovation', 'Immobilier', 'Arts'],
           datasets: [{
-            data: [1000, 2000, 500, 200, 1000],
+            data: [2000, 1000, 800, 500, 200],
             backgroundColor: [
-              "#77CEFF",
-              "#0079AF",
-              "#123E6B",
-              "#97B0C4",
-              "#A5C8ED",
+              "#5a4fcf",
+              "#b3afe3",
+              "#ede9fe",
+              "#f5f3ff",
+              "#f9fafb",
             ],
+            hoverBackgroundColor: [
+              "#5a4fcf",
+              "#b3afe3",
+              "#ede9fe",
+              "#f5f3ff",
+              "#f9fafb",
+            ]
           }]
         },
         doughnutByThemesOptions: {
           plugins: {
+            tooltip: {
+              displayColors: false,
+              padding: 10,
+              boxPadding: 5,
+              callbacks: {
+                label: (ctx) => `${ctx.label} : ${ctx.parsed.toLocaleString('fr-FR')} €`,
+              }
+            },
             legend: {
-              fullSize: false,
-              position: 'bottom',
+              display: false,
             },
             title: {
               display: true,

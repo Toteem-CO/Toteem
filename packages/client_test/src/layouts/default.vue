@@ -1,5 +1,5 @@
 <template>
-  <section class="toteem-layout h-screen w-screen grid grid-cols-[15rem,1fr] grid-rows-[4rem,1fr]">
+  <section class="toteem-layout grid grid-cols-[15rem,1fr] grid-rows-[4rem,1fr]">
 
     <!-- LEFT MENU -->
     <section class="col-start-1 row-start-1 col-span-1 row-span-2 bg-background z-50 shadow-[0_0_30px_-12px_rgb(0,0,0,0.25)]">

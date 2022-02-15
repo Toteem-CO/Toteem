@@ -1,5 +1,5 @@
 <template>
-  <section class="shared-left-menu-component h-full flex flex-col bg-white">
+  <section class="shared-left-menu-component h-full w-[15rem] fixed flex flex-col bg-white">
 
     <!-- LOGO -->
     <div class="my-7 px-6">

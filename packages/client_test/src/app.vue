@@ -10,7 +10,7 @@
 
 <style lang="scss">
   body {
-    @apply text-gray-500 bg-neutral-50;
+    @apply text-gray-500 bg-gray-50;
 
     .tooltip {
       @apply opacity-0 absolute bg-gray-700 text-gray-100 invisible;
