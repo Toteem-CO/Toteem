@@ -1,7 +1,12 @@
 <template>
-  <div class="ui-button-component my-1">
-    <button :class="classBinding">{{ text }}</button>
-  </div>
+  <button :class="classBinding">
+    <div>
+      <slot/>
+    </div>
+    <div>
+      {{ text }}
+    </div>
+  </button>
 </template>
 
 <script>
@@ -20,16 +25,17 @@ export default {
   computed: {
     classBinding() {
       return {
-        'bg-primary': this.isActive,
-        'bg-background': !this.isActive,
-        'rounded-xl': true,
+        'flex': true,
+        'flex-row': true,
+        'items-center': true,
+        //'bg-[#edecfa]': this.isActive,
+        'bg-gray-100': this.isActive,
+        //'text-neutral-50': this.isActive,
         'outline-none': true,
         'focus:outline-none': true,
-        'p-2': true,
-        'py-0.6rem': true,
+        //'px-1.5': true,
+        'py-2.5': true,
         'w-full': true,
-        'text-textSecondary': !this.isActive,
-        'text-background': this.isActive,
         'font-medium': true,
         'text-left': true
       };
