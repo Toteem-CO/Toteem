@@ -1,6 +1,7 @@
 {
   "name": "toteem",
   "version": "1.0.0",
+  "private": true,
   "workspaces": [
     "./packages/*"
   ],
@@ -8,11 +9,20 @@
   "author": "Toteem",
   "engines": {
     "node": "17.1.0",
-    "npm": "8.1.2"
+    "npm": "8.5.2"
   },
   "scripts": {
     "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
     "start": "npm start --workspace=$PACKAGE_NAME",
-    "build": "npm run build --workspace=$PACKAGE_NAME"
+    "build": "npm run build --workspace=$PACKAGE_NAME",
+    "clean:modules": "rm -rf node_modules ./packages/api/node_modules ./packages/client/node_modules ./packages/shared/node_modules",
+    "clean:client": "rm -rf ./packages/client/.nuxt ./packages/client/.output",
+    "clean:everything": "npm run clean:modules && npm run clean:client",
+    "dev:api": "npm run dev --workspace=@toteem/api",
+    "dev:client": "npm run dev --workspace=@toteem/client",
+    "build:api": "npm run build --workspace=@toteem/api",
+    "build:client": "npm run build --workspace=@toteem/client",
+    "start:api": "npm run start --workspace=@toteem/api",
+    "start:client": "npm run start --workspace=@toteem/client"
   }
 }

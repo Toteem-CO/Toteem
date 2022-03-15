@@ -1,37 +1,33 @@
 {
   "name": "@toteem/client",
   "version": "1.0.0",
+  "private": true,
   "description": "Toteem Client",
   "author": "Toteem",
   "engines": {
     "node": "17.1.0",
-    "npm": "8.1.2"
+    "npm": "8.5.2"
   },
   "main": "src/index.js",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "dev": "rm -rf .nuxt .output && nuxi dev -o",
+    "build": "rm -rf .nuxt .output && nuxi build",
+    "start": "nuxi start"
   },
   "devDependencies": {
+    "@heroicons/vue": "^1.0.6",
+    "@pinia/nuxt": "0.1.8",
     "autoprefixer": "10.4.2",
-    "nuxt3": "3.0.0-27376943.f219f63",
+    "axios": "^0.26.1",
+    "chart.js": "^3.7.1",
+    "daisyui": "2.8.0",
+    "nuxt3": "latest",
+    "pinia": "^2.0.12",
     "postcss": "8.4.5",
     "sass": "1.49.0",
     "sass-loader": "12.4.0",
-    "tailwindcss": "3.0.15"
+    "tailwindcss": "3.0.23",
+    "vue-chart-3": "^3.1.4"
   },
-  "dependencies": {
-    "@headlessui/vue": "^1.4.3",
-    "@heroicons/vue": "1.0.5",
-    "@pinia/nuxt": "0.1.8",
-    "@tailwindcss/aspect-ratio": "0.4.0",
-    "@tailwindcss/forms": "0.4.0",
-    "@tailwindcss/line-clamp": "0.3.1",
-    "@tailwindcss/typography": "0.5.0",
-    "axios": "^0.24.0",
-    "chart.js": "^3.7.0",
-    "pinia": "^2.0.9",
-    "vue-chart-3": "^3.0.9"
-  }
+  "dependencies": {}
 }

@@ -1,94 +1,122 @@
 <template>
-  <section class="shared-left-menu-component h-full w-[15rem] fixed flex flex-col bg-white">
+  <section class="shared-left-menu-component h-full w-[15rem] fixed flex flex-col bg-base-100 border-r-base-300 border-r">
 
     <!-- LOGO -->
-    <div class="my-7 px-6">
+    <div class="mt-4 mb-10 px-6">
       <NuxtLink :to="`/?view=${$route.query.view}`">
         <img class="w-32 inline-block" src="~/assets/images/logo.svg" alt="Toteem Logo"/>
       </NuxtLink>
     </div>
 
-    <!-- MAIN MENU -->
-    <div class="flex-1">
-      <NuxtLink :to="`/?view=${$route.query.view}`">
-        <UiButton text="Tableau de bord" :isActive="isActive('index')" class="px-6">
-          <HomeIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </NuxtLink>
+    <template v-if="adminMode">
+      <ul class="menu p-1 px-4 rounded-box flex-1">
+        <li class="tooltip" data-tip="Bientôt disponible">
+          <NuxtLink :to="`/?view=${$route.query.view}`" :class="isActive('index') ? 'active' : ''">
+            <HomeIcon aria-hidden="true" class="w-5 h-5" />
+            Tableau de bord
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <UsersIcon aria-hidden="true" class="w-5 h-5" />
+            Collaborateurs
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <HeartIcon aria-hidden="true" class="w-5 h-5" />
+            Abondement
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <CalendarIcon aria-hidden="true" class="w-5 h-5" />
+            Campagne Annuelle
+          </NuxtLink>
+        </li>
+      </ul>
 
-      <div to="/collaborators" class="has-tooltip" v-if="adminMode">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
-        <UiButton text="Collaborateurs" :isActive="isActive('collaborators')" class="px-6">
-          <UsersIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </div>
-      <div to="/contribution" class="has-tooltip" v-if="adminMode">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
-        <UiButton text="Abondement" :isActive="isActive('contribution')" class="px-6">
-          <HeartIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </div>
-      <div to="/manage" class="has-tooltip" v-if="!adminMode">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
-        <UiButton text="Gérer mon épargne" :isActive="isActive('manage')" class="px-6">
-          <AdjustmentsIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </div>
-
-      <div to="/campaign" class="has-tooltip">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
-        <UiButton text="Campagne annuelle" :isActive="isActive('campaign')" class="px-6">
-          <CalendarIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </div>
-    </div>
-
-    <!-- SECONDARY MENU -->
-    <div class="my-6">
-      <div class="font-bold text-sm border-t-2 border-gray-200 py-4 mx-6">
+      <div class="font-medium text-sm border-t-2 border-gray-200 pt-4 mx-6">
         Suivre
       </div>
-      <div to="/operations" class="has-tooltip">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
-        <UiButton text="Mes opérations" :isActive="isActive('operations')" class="px-6">
-          <ClipboardListIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
+
+      <ul class="menu p-1 px-4 py-6 mb-0 rounded-box">
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <ClipboardListIcon aria-hidden="true" class="w-5 h-5" />
+            Mes opérations
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <CogIcon aria-hidden="true" class="w-5 h-5" />
+            Mon dispositif
+          </NuxtLink>
+        </li>
+      </ul>
+    </template>
+
+    <template v-else>
+      <ul class="menu p-1 px-4 rounded-box flex-1">
+        <li class="tooltip" data-tip="Bientôt disponible">
+          <NuxtLink :to="`/?view=${$route.query.view}`" :class="isActive('index') ? 'active' : ''">
+            <HomeIcon aria-hidden="true" class="w-5 h-5" />
+            Tableau de bord
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <AdjustmentsIcon aria-hidden="true" class="w-5 h-5" />
+            Mon Épargne
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <CalendarIcon aria-hidden="true" class="w-5 h-5" />
+            Campagne Annuelle
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <div class="font-medium text-sm border-t-2 border-gray-200 pt-4 mx-6">
+        Suivre
       </div>
-      <div to="/plan" class="has-tooltip">
-        <span class="tooltip tooltip-top">Bientôt Disponible !</span>
-        <UiButton text="Mon dispositif" :isActive="isActive('plan')" class="px-6">
-          <CogIcon aria-hidden="true" class="w-5 h-5 mr-2" />
-        </UiButton>
-      </div>
-    </div>
+
+      <ul class="menu p-1 px-4 py-6 mb-0 rounded-box">
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <ClipboardListIcon aria-hidden="true" class="w-5 h-5" />
+            Mes opérations
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink :to="`/?view=${$route.query.view}`">
+            <CogIcon aria-hidden="true" class="w-5 h-5" />
+            Mon dispositif
+          </NuxtLink>
+        </li>
+      </ul>
+    </template>
 
   </section>
 </template>
 
 <script>
   import { HomeIcon, AdjustmentsIcon, CalendarIcon, CogIcon, ClipboardListIcon, UsersIcon, HeartIcon } from '@heroicons/vue/outline';
-  //import { useUsersStore } from '~/stores/users';
+  import { useUsersStore } from '~/stores/users';
 
   export default {
-    components: {
-      HomeIcon,
-      AdjustmentsIcon,
-      CalendarIcon,
-      CogIcon,
-      ClipboardListIcon,
-      UsersIcon,
-      HeartIcon,
-    },
+    components: { HomeIcon, AdjustmentsIcon, CalendarIcon, CogIcon, ClipboardListIcon, UsersIcon, HeartIcon },
 
     data() {
       return {
-        //store: useUsersStore(),
+        store: useUsersStore(),
       };
     },
 
     computed: {
       adminMode() {
-        //return this.store.getCurrentUserView === 'admin';
+        return this.store.getCurrentUserView === 'admin';
       }
     },
 

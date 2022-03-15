@@ -1,9 +1,12 @@
-import { defineNuxtConfig } from "nuxt3";
+import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  srcDir: "src/",
-  buildModules: ["@pinia/nuxt"],
+  ssr: false,
+  srcDir: 'src/',
+  css: ['~/assets/styles/fonts.scss', '~/assets/styles/tailwind.scss', '~/assets/styles/global.scss'],
+  buildModules: ['@pinia/nuxt'],
   build: {
+    transpile: ['chart.js'],
     postcss: {
       postcssOptions: {
         plugins: {
@@ -14,18 +17,22 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    logLevel: "info",
+    logLevel: 'info',
     optimizeDeps: {
       include: [
-        "@headlessui/vue",
-        "@heroicons/vue/solid",
-        "@heroicons/vue/outline",
-        "vue",
-        "pinia",
+        'vue',
+        'pinia',
+        'vue-chart-3',
+        'chart.js',
+        'axios',
       ],
     },
   },
   publicRuntimeConfig: {
     API_URL: process.env.API_URL,
   },
+  meta: {
+    title: 'Toteem',
+    link: [{ rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.png' }],
+  }
 });

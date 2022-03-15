@@ -1,15 +1,17 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const useUsersStore = defineStore("users", {
+export const useUsersStore = defineStore('users', {
   state: () => ({
     currentUser: {
-      firstName: "",
-      view: "",
+      firstName: '',
+      lastName: '',
+      view: '',
       hasAccessToAdmin: false,
     },
   }),
   getters: {
     getCurrentUserFirstName: (state) => state.currentUser.firstName,
+    getCurrentUserLastName: (state) => state.currentUser.lastName,
     getCurrentUserView: (state) => state.currentUser.view,
     getCurrentUserHasAccessToAdmin: (state) =>
       state.currentUser.hasAccessToAdmin,
@@ -17,6 +19,9 @@ export const useUsersStore = defineStore("users", {
   actions: {
     setCurrentUserFirstName({ firstName }) {
       this.currentUser.firstName = firstName;
+    },
+    setCurrentUserLastName({ lastName }) {
+      this.currentUser.lastName = lastName;
     },
     setCurrentUserView({ view }) {
       this.currentUser.view = view;

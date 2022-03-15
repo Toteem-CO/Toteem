@@ -1,100 +1,74 @@
 <template>
-  <section class="flex flex-row h-full w-full py-4 px-8 items-center justify-center">
+  <div class="navbar px-8 border-b-base-300 border-b bg-base-100 fixed">
+    <div class="navbar-start"></div>
 
-    <!-- LEFT PART -->
-    <div class="flex flex-row flex-1 items-center justify-end">
-      <div class="has-tooltip">
-        <span class="tooltip tooltip-bottom"> Bientôt Disponible !</span>
+    <div class="navbar-end">
+      <button class="btn btn-circle btn-ghost">
         <SupportIcon class="w-5 h-5" />
-      </div>
-      <div class="ml-4 has-tooltip">
-        <span class="tooltip tooltip-bottom">Bientôt Disponible !</span>
+      </button>
+      <button class="btn btn-circle btn-ghost">
         <BellIcon class="w-5 h-5" />
+      </button>
+
+      <div class="divider divider-horizontal h-8 self-center"></div>
+
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost normal-case">
+          <span class="pr-2">{{ firstName }}</span>
+          <ChevronDownIcon class="w-5 h-5" />
+        </label>
+        <div tabindex="0" class="dropdown-content card card-compact bg-base-100 shadow-lg mt-4 w-56">
+          <div class="card-body">
+            <ul class="menu menu-compact rounded-box p-1">
+              <li><a><UserIcon class="w-5 h-5" />Profil</a></li>
+              <li><a @click="disconnect()"><LogoutIcon class="w-5 h-5" />Déconnexion</a></li>
+            </ul>
+            <template v-if="hasAccessToAdmin">
+              <div class="divider m-0"></div>
+              <div class="form-control p-2">
+                <label class="label cursor-pointer">
+                  <span class="label-text">Vue Entreprise</span>
+                  <input type="checkbox" class="toggle toggle-primary" v-model="adminMode">
+                </label>
+              </div>
+            </template>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- RIGHT PART -->
-    <div class="flex flex-row items-center justify-center border-l-2 border-gray-200 pl-6 ml-6">
-      <Popover class="relative">
-        <PopoverButton class="flex flex-row items-center">
-          <div class="font-semibold">{{ firstName }}</div>
-          <div class="pl-2"><ChevronDownIcon class="w-5 h-5" /></div>
-        </PopoverButton>
-
-        <PopoverPanel class="absolute z-50 flex flex-col right-0 top-10 bg-gray-50 rounded-lg shadow-[0_0_12px_-2px_rgb(0,0,0,0.25)] ring-black ring-opacity-5 w-72">
-          <div class="flex-1 flex flex-col p-6">
-            <div class="flex items-center mb-2 has-tooltip">
-              <span class="tooltip tooltip-bottom tooltip-arrow-left">Bientôt Disponible !</span>
-              <UserIcon class="w-5 h-5 mr-2" />Profil
-            </div>
-            <a href="" class="flex items-center" @click="disconnect()"><LogoutIcon class="w-5 h-5 mr-2" />Déconnexion</a>
-          </div>
-
-          <div v-if="hasAccessToAdmin" class="bg-gray-100 border-t-2 p-6 rounded-br-lg rounded-bl-lg">
-            <SwitchGroup>
-              <div class="flex items-center">
-                <SwitchLabel class="mr-4 flex items-center cursor-pointer"><UserGroupIcon class="w-5 h-5 mr-2" />Mode Administrateur</SwitchLabel>
-                <Switch
-                  v-model="adminMode"
-                  :class='adminMode ? "bg-[#5a4fcf]" : "bg-violet-100"'
-                  class="relative inline-flex items-center h-6 transition-colors rounded-full w-11 focus:outline-none focus:ring-0"
-                >
-                  <span
-                    :class='adminMode ? "translate-x-6" : "translate-x-1"'
-                    class="inline-block w-4 h-4 transition-transform transform bg-white rounded-full"
-                  />
-                </Switch>
-              </div>
-            </SwitchGroup>
-          </div>
-        </PopoverPanel>
-      </Popover>
-    </div>
-  </section>
+  </div>
 </template>
 
 <script>
-  import { SupportIcon, BellIcon, ChevronDownIcon, UserIcon, LogoutIcon, UserGroupIcon } from '@heroicons/vue/outline';
-  import { Popover, PopoverButton, PopoverPanel, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-  //import { useUsersStore } from '~/stores/users';
+  import { SupportIcon, BellIcon, ChevronDownIcon, UserIcon, LogoutIcon } from '@heroicons/vue/outline';
+  import { useUsersStore } from '~/stores/users';
 
   export default {
-    components: {
-      SupportIcon,
-      BellIcon,
-      ChevronDownIcon,
-      UserIcon,
-      LogoutIcon,
-      UserGroupIcon,
-      Popover,
-      PopoverButton,
-      PopoverPanel,
-      Switch,
-      SwitchGroup,
-      SwitchLabel,
-    },
+    components: { SupportIcon, BellIcon, ChevronDownIcon, UserIcon, LogoutIcon },
 
     data() {
       return {
-        //store: useUsersStore(),
+        store: useUsersStore(),
       };
     },
 
     computed: {
       firstName() {
-        //return this.store.getCurrentUserFirstName;
+        return this.store.getCurrentUserFirstName;
+      },
+      lastName() {
+        return this.store.getCurrentUserLastName;
       },
       hasAccessToAdmin() {
-        //return this.store.getCurrentUserHasAccessToAdmin;
+        return this.store.getCurrentUserHasAccessToAdmin;
       },
       adminMode: {
         get() {
-          //return this.store.getCurrentUserView === 'admin';
-          return true;
+          return this.store.getCurrentUserView === 'admin';
         },
         set(newValue) {
           const view = !!newValue ? 'admin' : 'user';
-          //this.store.setCurrentUserView({ view });
+          this.store.setCurrentUserView({ view });
           this.$router.push({ query: { view } });
         }
       }
@@ -102,8 +76,8 @@
 
     methods: {
       disconnect() {
-        document.cookie = `toteemToken=noop; max-age=0`;
-        this.$router.push('/signin');
+        document.cookie = `X-Toteem-Access-Token=noop; max-age=0`;
+        this.$router.push('/login');
       }
     }
   };

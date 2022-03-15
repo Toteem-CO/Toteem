@@ -1,16 +1,17 @@
 <template>
-  <section>
+  <NuxtLayout>
     <NuxtPage/>
-  </section>
+  </NuxtLayout>
 </template>
 
-<script setup>
+<!--<script setup>
   import '~/assets/styles/tailwind.scss';
-</script>
+  import '~/assets/fonts/inter.scss';
+</script>-->
 
 <style lang="scss">
   body {
-    @apply text-gray-500 bg-gray-50;
+/*    @apply text-gray-500 bg-gray-50;
 
     .tooltip {
       @apply opacity-0 absolute bg-gray-700 text-gray-100 invisible;
@@ -62,6 +63,6 @@
 
     .has-tooltip:hover .tooltip {
       @apply opacity-100 z-50 visible;
-    }
+    }*/
   }
 </style>
