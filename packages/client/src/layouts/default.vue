@@ -21,7 +21,7 @@
 
 <script>
   import axios from 'axios';
-  import { useUsersStore } from '~/stores/users';
+  //import { useUsersStore } from '~/stores/users';
 
   export default {
     async beforeMount() {
@@ -42,10 +42,10 @@
         if (response.data.message !== 'Ok') {
           this.$router.push('/signin');
         } else {
-          this.store.setCurrentUserFirstName({ firstName: response.data.data.firstName });
+/*          this.store.setCurrentUserFirstName({ firstName: response.data.data.firstName });
           this.store.setCurrentUserView({ view });
           this.store.setCurrentUserHasAccessToAdmin({ hasAccessToAdmin });
-          console.log(this.store.getCurrentUserView);
+          console.log(this.store.getCurrentUserView);*/
           this.$router.push({ query: { view } });
         }
 
@@ -56,7 +56,7 @@
 
     data() {
       return {
-        store: useUsersStore(),
+        //store: useUsersStore(),
       };
     },
 

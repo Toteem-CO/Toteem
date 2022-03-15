@@ -56,7 +56,7 @@
 <script>
   import { SupportIcon, BellIcon, ChevronDownIcon, UserIcon, LogoutIcon, UserGroupIcon } from '@heroicons/vue/outline';
   import { Popover, PopoverButton, PopoverPanel, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-  import { useUsersStore } from '~/stores/users';
+  //import { useUsersStore } from '~/stores/users';
 
   export default {
     components: {
@@ -76,24 +76,25 @@
 
     data() {
       return {
-        store: useUsersStore(),
+        //store: useUsersStore(),
       };
     },
 
     computed: {
       firstName() {
-        return this.store.getCurrentUserFirstName;
+        //return this.store.getCurrentUserFirstName;
       },
       hasAccessToAdmin() {
-        return this.store.getCurrentUserHasAccessToAdmin;
+        //return this.store.getCurrentUserHasAccessToAdmin;
       },
       adminMode: {
         get() {
-          return this.store.getCurrentUserView === 'admin';
+          //return this.store.getCurrentUserView === 'admin';
+          return true;
         },
         set(newValue) {
           const view = !!newValue ? 'admin' : 'user';
-          this.store.setCurrentUserView({ view });
+          //this.store.setCurrentUserView({ view });
           this.$router.push({ query: { view } });
         }
       }

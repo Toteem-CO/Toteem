@@ -1,7 +1,7 @@
 <template>
-  <section class="toteem-layout h-screen w-screen flex flex-col justify-center items-center">
+  <div class="toteem-layout h-screen w-screen flex flex-col justify-center items-center">
     <slot />
-  </section>
+  </div>
 </template>
 
 <script>

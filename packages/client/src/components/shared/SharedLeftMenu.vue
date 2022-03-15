@@ -67,7 +67,7 @@
 
 <script>
   import { HomeIcon, AdjustmentsIcon, CalendarIcon, CogIcon, ClipboardListIcon, UsersIcon, HeartIcon } from '@heroicons/vue/outline';
-  import { useUsersStore } from '~/stores/users';
+  //import { useUsersStore } from '~/stores/users';
 
   export default {
     components: {
@@ -82,13 +82,13 @@
 
     data() {
       return {
-        store: useUsersStore(),
+        //store: useUsersStore(),
       };
     },
 
     computed: {
       adminMode() {
-        return this.store.getCurrentUserView === 'admin';
+        //return this.store.getCurrentUserView === 'admin';
       }
     },
 
