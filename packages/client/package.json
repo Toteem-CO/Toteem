@@ -5,8 +5,8 @@
   "description": "Toteem Client",
   "author": "Toteem",
   "engines": {
-    "node": "17.1.0",
-    "npm": "8.5.2"
+    "node": "18.1.0",
+    "npm": "8.8.0"
   },
   "main": "src/index.js",
   "scripts": {
@@ -16,18 +16,18 @@
   },
   "devDependencies": {
     "@heroicons/vue": "^1.0.6",
-    "@pinia/nuxt": "0.1.8",
+    "@pinia/nuxt": "0.1.9",
     "autoprefixer": "10.4.2",
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
-    "daisyui": "2.8.0",
+    "daisyui": "2.14.3",
     "nuxt3": "latest",
-    "pinia": "^2.0.12",
+    "pinia": "^2.0.14",
     "postcss": "8.4.5",
     "sass": "1.49.0",
     "sass-loader": "12.4.0",
-    "tailwindcss": "3.0.23",
-    "vue-chart-3": "^3.1.4"
+    "tailwindcss": "3.0.24",
+    "vue-chart-3": "^3.1.8"
   },
   "dependencies": {}
 }

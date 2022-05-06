@@ -8,8 +8,8 @@
   "description": "Toteem",
   "author": "Toteem",
   "engines": {
-    "node": "17.1.0",
-    "npm": "8.5.2"
+    "node": "18.1.0",
+    "npm": "8.8.0"
   },
   "scripts": {
     "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
