@@ -12,19 +12,24 @@ export default async (req, res, next) => {
     const isAuthenticated = response.data.message === 'Ok';
 
     if (isAuthenticated && req.url === '/collaborator/login') {
+      console.log(1);
       res.writeHead(301, { Location: '/collaborator' });
       res.end();
     } else if (isAuthenticated || req.url === '/collaborator/login') {
+      console.log(req.url);
       next();
     } else {
+      console.log(3);
       res.writeHead(301, { Location: '/collaborator/login' });
       res.end();
     }
   } catch (e) {
     if (req.url !== '/collaborator/login') {
+      console.log(4);
       res.writeHead(301, { Location: '/collaborator/login' });
       res.end();
     } else {
+      console.log(5);
       next();
     }
   }

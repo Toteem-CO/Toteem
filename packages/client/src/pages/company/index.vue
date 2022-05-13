@@ -7,25 +7,34 @@
 </template>
 
 <script>
-  import { useUsersStore } from '~/stores/users';
+import { useUsersStore } from '~/stores/users';
 
-  export default {
+export default {
 
-    setup() {
-      definePageMeta({ layout: 'private-app-layout' });
-    },
+  setup() {
 
-    data() {
-      return {
-        store: useUsersStore(),
-      }
-    },
-
-    computed: {
-      adminMode() {
-        return this.store.getCurrentUserView === 'admin';
+    useMeta({
+      htmlAttrs: {
+        'data-theme': 'toteem-dark',
       },
-    },
+    });
 
-  }
+    definePageMeta({
+      layout: 'company',
+    });
+  },
+
+  data() {
+    return {
+      store: useUsersStore(),
+    }
+  },
+
+  computed: {
+    adminMode() {
+      return this.store.getCurrentUserView === 'admin';
+    },
+  },
+
+}
 </script>

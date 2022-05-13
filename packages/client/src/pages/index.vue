@@ -1,5 +1,5 @@
 <script setup>
-  definePageMeta({
-    middleware: () => navigateTo('/collaborator'),
-  });
+definePageMeta({
+  middleware: () => navigateTo('/collaborator'),
+});
 </script>

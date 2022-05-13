@@ -7,25 +7,29 @@
 </template>
 
 <script>
-  import { useUsersStore } from '~/stores/users';
+import { useUsersStore } from '~/stores/users';
 
-  export default {
+export default {
 
-    setup() {
-      definePageMeta({ layout: 'private-app-layout' });
+  setup() {
+    definePageMeta({ layout: 'private-app-layout' });
+  },
+
+  mounted() {
+    console.log(this.$axios);
+  },
+
+  data() {
+    return {
+      store: useUsersStore(),
+    }
+  },
+
+  computed: {
+    adminMode() {
+      return this.store.getCurrentUserView === 'admin';
     },
+  },
 
-    data() {
-      return {
-        store: useUsersStore(),
-      }
-    },
-
-    computed: {
-      adminMode() {
-        return this.store.getCurrentUserView === 'admin';
-      },
-    },
-
-  }
+}
 </script>

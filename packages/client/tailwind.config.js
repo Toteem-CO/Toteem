@@ -18,7 +18,7 @@ module.exports = {
   },
   daisyui: {
     themes: [{
-      mytheme: {
+      'toteem-light': {
         'primary': '#5A4FCF',
         'primary-content': '#F5F5F5',
         'secondary': '#FB6F58',
@@ -32,13 +32,14 @@ module.exports = {
         'warning': '#FBBD23',
         'error': '#EA4436',
       },
+    }, {
+      'toteem-dark': {
+        ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+        'primary': '#5A4FCF',
+      },
     }],
   },
   plugins: [
-/*    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),*/
     require('daisyui'),
   ],
 };

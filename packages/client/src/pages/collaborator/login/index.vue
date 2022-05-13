@@ -8,13 +8,13 @@
         <label class="label">
           <span class="label-text">Email</span>
         </label>
-        <input v-model.trim="email" type="text" placeholder="Email" class="input input-bordered">
+        <input v-model.trim="email" type="text" placeholder="Email" class="input input-bordered" />
       </div>
       <div class="form-control">
         <label class="label">
           <span class="label-text">Password</span>
         </label>
-        <input v-model.trim="password" type="password" placeholder="Password" class="input input-bordered">
+        <input v-model.trim="password" type="password" placeholder="Password" class="input input-bordered" />
       </div>
       <div class="form-control mt-6">
         <button @click.prevent="login" class="btn btn-primary">Connexion</button>
@@ -52,8 +52,8 @@ export default {
         this.$setToteemToken(response.data.data.token);
         this.$router.push({ path: `/` });
         this.loginError = false;
-      } catch(e) {
-       this.loginError = true;
+      } catch (e) {
+        this.loginError = true;
       }
     }
   }
