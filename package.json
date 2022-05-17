@@ -9,7 +9,8 @@
   "author": "Toteem",
   "engines": {
     "node": "18.1.0",
-    "npm": "8.8.0"
+    "npm": "8.8.0",
+    "yarn": "3.2.0"
   },
   "scripts": {
     "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
@@ -18,11 +19,11 @@
     "clean:modules": "rm -rf node_modules ./packages/api/node_modules ./packages/client/node_modules ./packages/shared/node_modules",
     "clean:client": "rm -rf ./packages/client/.nuxt ./packages/client/.output",
     "clean:everything": "npm run clean:modules && npm run clean:client",
-    "dev:api": "npm run dev --workspace=@toteem/api",
-    "dev:client": "npm run dev --workspace=@toteem/client",
-    "build:api": "npm run build --workspace=@toteem/api",
+    "dev:api": "yarn workspace @toteem/api run dev",
+    "dev:client": "yarn workspace @toteem/client run dev",
+    "build:api": "yarn workspace @toteem/api run build",
     "build:client": "npm run build --workspace=@toteem/client",
-    "start:api": "npm run start --workspace=@toteem/api",
+    "start:api": "yarn workspace @toteem/api run start",
     "start:client": "npm run start --workspace=@toteem/client"
   }
 }

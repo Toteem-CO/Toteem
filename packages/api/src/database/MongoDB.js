@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
-import logger from '@toteem/shared/logger';
-import { __Config } from '../../config';
+import logger from '@toteem/shared/logger/index.js';
+import { __Config } from '../../config/index.js';
 
 let __Server = null;
 let __Database = null;

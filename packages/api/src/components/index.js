@@ -1,7 +1,7 @@
 import Router from '@koa/router';
 
-import { PingRouter } from './ping';
-import { UsersRouter } from './users';
+import { PingRouter } from './ping/index.js';
+import { UsersRouter } from './users/index.js';
 
 export const ApiRouter = new Router();
 

@@ -1,3 +1,3 @@
-export * from './Regex';
-export * from './HttpCodes';
+export * from './Regex.js';
+export * from './HttpCodes.js';
 export * from './Roles.js';

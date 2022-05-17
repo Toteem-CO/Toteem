@@ -1,10 +1,11 @@
 import axios from 'axios';
-import config from '#config';
+//import config from '#config';
 import { useCookie } from 'h3'
 
 export default async (req, res, next) => {
   try {
-    const apiUrl = config.API_URL;
+    const config = useRuntimeConfig();
+    const apiUrl = config.public.API_URL;
     const token = useCookie(req, 'X-Toteem-Access-Token');
     const response = await axios.get(`${apiUrl}/users/me`, {
       headers: { 'X-Toteem-Access-Token': token },

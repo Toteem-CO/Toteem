@@ -1,5 +1,5 @@
-import { __HttpCodes } from '@toteem/shared/constants';
-import { CtxResponder } from '../utils/CtxResponder';
+import { __HttpCodes } from '@toteem/shared/constants/index.js';
+import { CtxResponder } from '../utils/CtxResponder.js';
 
 export const CatchErrors = async function (ctx, next) {
   try {

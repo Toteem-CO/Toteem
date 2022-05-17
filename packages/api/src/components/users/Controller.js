@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { __HttpCodes, __Roles } from '@toteem/shared/constants';
-import { __Config } from '../../../config';
-import { MongoDB } from '../../database/MongoDB';
-import { CtxResponder } from '../../utils/CtxResponder';
+import { __HttpCodes, __Roles } from '@toteem/shared/constants/index.js';
+import { __Config } from '../../../config/index.js';
+import { MongoDB } from '../../database/MongoDB.js';
+import { CtxResponder } from '../../utils/CtxResponder.js';
 
 export const UsersController = {
   getCurrentUser(ctx) {

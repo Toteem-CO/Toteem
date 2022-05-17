@@ -10,7 +10,7 @@
   "type": "module",
   "scripts": {
     "test": "npm run test:mocha && npm run test:eslint && npm run test:prettier",
-    "test:mocha": "mocha --experimental-specifier-resolution=node **/*.test.js --recursive --exit",
+    "test:mocha": "mocha **/*.test.js --recursive --exit",
     "test:eslint": "eslint .",
     "test:prettier": "prettier --check ."
   },

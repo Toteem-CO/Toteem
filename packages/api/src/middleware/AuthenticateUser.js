@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-import logger from '@toteem/shared/logger';
-import { __HttpCodes } from '@toteem/shared/constants';
-import { __Config } from '../../config';
-import { MongoDB } from '../database/MongoDB';
-import { CtxResponder } from '../utils/CtxResponder';
+import logger from '@toteem/shared/logger/index.js';
+import { __HttpCodes } from '@toteem/shared/constants/index.js';
+import { __Config } from '../../config/index.js';
+import { MongoDB } from '../database/MongoDB.js';
+import { CtxResponder } from '../utils/CtxResponder.js';
 
 const __TokenPropertyName = 'X-Toteem-Access-Token';
 

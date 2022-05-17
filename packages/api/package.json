@@ -12,15 +12,16 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run test:mocha && npm run test:eslint && npm run test:prettier",
-    "test:mocha": "mocha --experimental-specifier-resolution=node --recursive --exit --require ./test/env.js",
+    "test:mocha": "mocha --recursive --exit --require ./test/env.js",
     "test:eslint": "eslint .",
     "test:prettier": "prettier --check .",
-    "start": "node --experimental-specifier-resolution=node src/index.js",
-    "dev": "nodemon --experimental-specifier-resolution=node src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "@koa/router": "10.1.1",
+    "@toteem/shared": "workspace:^",
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "joi": "^17.5.0",

@@ -44,7 +44,8 @@ export default {
   methods: {
     async login() {
       try {
-        const apiUrl = this.$config.API_URL;
+        const config = useRuntimeConfig();
+        const apiUrl = config.public.API_URL;
         const email = this.email;
         const password = this.password;
         const response = await axios.post(`${apiUrl}/users/login`, { email, password });

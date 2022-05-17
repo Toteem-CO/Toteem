@@ -1,9 +1,9 @@
 import Router from '@koa/router';
 import koaBody from 'koa-body';
 
-import { AuthenticateUser } from '../../middleware/AuthenticateUser';
-import { EnsureUsersSchema } from '../../middleware/EnsureUsersSchema';
-import { UsersController } from './Controller';
+import { AuthenticateUser } from '../../middleware/AuthenticateUser.js';
+import { EnsureUsersSchema } from '../../middleware/EnsureUsersSchema.js';
+import { UsersController } from './Controller.js';
 
 export const UsersRouter = new Router();
 

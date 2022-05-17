@@ -1,14 +1,14 @@
 // Should Always Be First In This File
-import {} from '@toteem/shared/env-loader';
-import { __Config } from '../config';
+import { } from '@toteem/shared/env-loader/index.js';
+import { __Config } from '../config/index.js';
 
 import Koa from 'koa';
 import cors from '@koa/cors';
 
-import logger from '@toteem/shared/logger';
-import { MongoDB } from './database/MongoDB';
-import { ApiRouter } from './components';
-import { CatchErrors } from './middleware/CatchErrors';
+import logger from '@toteem/shared/logger/index.js';
+import { MongoDB } from './database/MongoDB.js';
+import { ApiRouter } from './components/index.js';
+import { CatchErrors } from './middleware/CatchErrors.js';
 
 const app = new Koa();
 

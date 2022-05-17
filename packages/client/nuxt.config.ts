@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3';
+import { defineNuxtConfig } from 'nuxt';
 
 export default defineNuxtConfig({
   ssr: false,
@@ -28,8 +28,10 @@ export default defineNuxtConfig({
       ],
     },
   },
-  publicRuntimeConfig: {
-    API_URL: process.env.API_URL,
+  runtimeConfig: {
+    public: {
+      API_URL: process.env.API_URL,
+    },
   },
   meta: {
     title: 'Toteem',

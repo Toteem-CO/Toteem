@@ -1,7 +1,7 @@
 import env from 'dotenv';
 import path from 'path';
 
-import logger from '@toteem/shared/logger';
+import logger from '@toteem/shared/logger/index.js';
 
 if (!process.env.HEROKU_CI) {
   const errorCode = 1;
