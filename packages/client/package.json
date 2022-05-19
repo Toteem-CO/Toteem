@@ -20,7 +20,7 @@
     "autoprefixer": "10.4.2",
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
-    "daisyui": "2.14.3",
+    "daisyui": "2.15.0",
     "nuxt": "3.0.0-rc.3",
     "pinia": "^2.0.14",
     "postcss": "8.4.5",
