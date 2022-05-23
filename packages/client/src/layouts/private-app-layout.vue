@@ -17,7 +17,9 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
+</script>
+<!-- <script>
 import axios from 'axios';
 import { useUsersStore } from '~/stores/users';
 
@@ -59,7 +61,4 @@ export default {
   },
 
 }
-</script>
-
-<style scoped>
-</style>
+</script> -->

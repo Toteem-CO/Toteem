@@ -24,39 +24,14 @@
   </div>
 </template>
 
-<script>
-import axios from 'axios';
+<script setup lang="ts">
 
-export default {
+  definePageMeta({
+    layout: 'login-layout',
+  });
 
-  setup() {
-    definePageMeta({ layout: 'login-layout' });
-  },
-
-  data() {
-    return {
-      email: '',
-      password: '',
-      loginError: false,
-    };
-  },
-
-  methods: {
-    async login() {
-      try {
-        const config = useRuntimeConfig();
-        const apiUrl = config.public.API_URL;
-        const email = this.email;
-        const password = this.password;
-        const response = await axios.post(`${apiUrl}/users/login`, { email, password });
-
-        this.$setToteemToken(response.data.data.token);
-        this.$router.push({ path: `/` });
-        this.loginError = false;
-      } catch (e) {
-        this.loginError = true;
-      }
-    }
-  }
-}
+  const email = ref<String>('');
+  const password = ref<String>('');
+  const loginError = ref<Boolean>(false);
+  const login = () => console.log(`Login ${email.value} ${password.value}`);
 </script>

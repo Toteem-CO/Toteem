@@ -1,5 +1,4 @@
-import axios from 'axios';
-//import config from '#config';
+/* import axios from 'axios';
 import { useCookie } from 'h3'
 
 export default async (req, res, next) => {
@@ -34,4 +33,9 @@ export default async (req, res, next) => {
       next();
     }
   }
+};
+ */
+
+export default async () => {
+  console.log('Request Server Side');
 };
