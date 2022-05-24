@@ -10,13 +10,14 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "dev": "rm -rf .nuxt .output && mkdir -p .nuxt/dist/server && touch .nuxt/dist/server/server.mjs && nuxt dev -o",
+    "dev": "rm -rf .nuxt .output && mkdir -p .nuxt/dist/server && touch .nuxt/dist/server/server.mjs && nuxt dev",
     "build": "rm -rf .nuxt .output && nuxt build",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@heroicons/vue": "^1.0.6",
     "@pinia/nuxt": "0.1.9",
+    "@toteem/shared": "workspace:^",
     "autoprefixer": "10.4.2",
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
