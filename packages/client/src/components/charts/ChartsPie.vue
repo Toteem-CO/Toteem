@@ -1,7 +1,19 @@
 <template>
-  <div class="relative h-32 w-32 flex items-center justify-center">
-    <slot name="icon" />
-    <canvas class="absolute h-32 w-32" :id="id"></canvas>
+  <div class="flex items-center justify-start">
+    <!-- Chart Container -->
+    <div class="relative h-32 w-32 flex items-center justify-center">
+      <slot name="icon" />
+      <canvas class="absolute h-32 w-32" :id="id"></canvas>
+    </div>
+    <!-- Legend -->
+    <div class="pl-4" v-if="displayLegend">
+      <div class="flex items-center py-1" v-for="(label, index) in labels">
+        <div class="h-4 w-6 rounded-md mr-2" :style="`background-color: ${colors[index]}`"></div>
+        <div>
+          <span class="text-base font-semibold">{{ values[index] }} €</span> {{ label }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,9 +21,10 @@
   import { Chart } from 'chart.js';
 
   const props = defineProps({
-    data: { type: Array, default: [] },
+    values: { type: Array, default: [] },
     colors: { type: Array, default: [] },
     labels: { type: Array, default: [] },
+    displayLegend: { type: Boolean, default: true },
   });
 
   const id = ref<string>(Math.random().toString().substring(2));
@@ -19,7 +32,7 @@
     labels: props.labels,
     datasets: [
       {
-        data: props.data,
+        data: props.values,
         backgroundColor: props.colors,
         hoverBackgroundColor: props.colors,
         borderWidth: 0,
