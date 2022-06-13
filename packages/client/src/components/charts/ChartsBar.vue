@@ -1,6 +1,6 @@
 <template>
-  <div class="h-12">
-    <canvas :id="id" class="h-12"></canvas>
+  <div class="h-10">
+    <canvas :id="id" class="h-10"></canvas>
   </div>
 </template>
 

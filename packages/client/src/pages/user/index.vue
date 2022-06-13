@@ -13,10 +13,13 @@
     <TheDashboardCardInvestmentsPerformance class="mb-8" />
 
     <!-- Contribution & Scheduled Payment -->
-    <div class="flex align-items justify-center">
-      <TheDashboardCardContribution class="flex-1" />
-      <div class="flex-1"></div>
+    <div class="flex align-items justify-center mb-8">
+      <TheDashboardCardContribution class="flex-1 mr-8" />
+      <TheDashboardCardScheduledPayment class="flex-1" />
     </div>
+
+    <!-- Toteem Profile -->
+    <TheDashboardCardProfile />
   </section>
 </template>
 
