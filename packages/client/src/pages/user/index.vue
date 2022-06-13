@@ -10,7 +10,13 @@
     <TheDashboardCardMyProjects class="mb-8" />
 
     <!-- Investments Performance Card -->
-    <TheDashboardCardInvestmentsPerformance />
+    <TheDashboardCardInvestmentsPerformance class="mb-8" />
+
+    <!-- Contribution & Scheduled Payment -->
+    <div class="flex align-items justify-center">
+      <TheDashboardCardContribution class="flex-1" />
+      <div class="flex-1"></div>
+    </div>
   </section>
 </template>
 
