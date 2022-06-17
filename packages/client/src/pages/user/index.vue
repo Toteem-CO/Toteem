@@ -1,7 +1,9 @@
 <template>
-  <section class="px-8 py-6">
-    <h1 class="text-3xl font-semibold text-gray-700">Tableau de bord</h1>
-    <h2 class="mt-2 mb-8 font-medium">Bonjour Julien, bienvenue sur votre espace ! 🎉</h2>
+  <div>
+    <SharedContentTitle>
+      <template #title>Tableau de bord</template>
+      <template #subtitle>Bonjour Julien, bienvenue sur votre espace ! 🎉</template>
+    </SharedContentTitle>
 
     <!-- Piggy Bank Card -->
     <TheDashboardCardPiggyBank class="mb-8" />
@@ -20,7 +22,7 @@
 
     <!-- Toteem Profile -->
     <TheDashboardCardProfile />
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">

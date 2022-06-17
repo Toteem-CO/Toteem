@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         sans: ["'Inter var'", ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        'ttm-layout': '0 0 14px 0 rgba(0, 0, 0, 0.1)',
+      },
     },
   },
   daisyui: {

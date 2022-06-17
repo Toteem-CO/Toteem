@@ -17,6 +17,8 @@
           </div>
         </div>
 
+        <div class="divider divider-horizontal"></div>
+
         <div class="flex-1">
           <h3 class="font-bold text-base mb-4">Centres d'intérêts</h3>
           <div class="flex items-center justify-between">

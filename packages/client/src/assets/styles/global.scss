@@ -11,3 +11,9 @@ html {
 body {
   @apply bg-base-200;
 }
+
+:root {
+  --ttm-navbar-height: 4rem;
+  --ttm-sidebar-width: 15rem;
+  --ttm-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
+}
