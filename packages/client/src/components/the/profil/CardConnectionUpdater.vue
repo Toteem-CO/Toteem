@@ -24,6 +24,17 @@
           </template>
         </UiCardBlock>
       </div>
+
+      <UiModal v-model="totoIsOpen" showCloseButton>
+        <template #title>Coucou</template>
+        <template #description>Comment ça va</template>
+        <template #content>NTR</template>
+        <template #actions>
+          <button class="btn btn-primary">Créer</button>
+        </template>
+      </UiModal>
+
+      <button class="btn btn-primary" @click="totoIsOpen = true">MODAL</button>
     </template>
 
     <template #actions>
@@ -75,6 +86,8 @@
 </template>
 
 <script setup lang="ts">
+  const totoIsOpen = ref(false);
+
   const email = ref('julien.dubois@gmail.com');
   const newEmail = ref(email.value);
   const emailValid = ref(true);
