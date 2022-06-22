@@ -1,6 +1,6 @@
 <template>
   <div class="h-48">
-    <canvas :id="id" class="h-48"></canvas>
+    <canvas :id="id" class="h-48" ref="canvasRef"></canvas>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
   });
 
   const id = ref<string>(Math.random().toString().substring(2));
+  const canvasRef = ref(null);
   const data = {
     labels: props.labels,
     datasets: [
@@ -65,6 +66,10 @@
   const chart = ref(null);
 
   onMounted(() => {
-    chart.value = new Chart(id.value, { type, data, options });
+    chart.value = new Chart(canvasRef.value, { type, data, options });
+  });
+
+  onBeforeUnmount(() => {
+    chart.value.destroy();
   });
 </script>

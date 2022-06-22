@@ -6,7 +6,7 @@
     :checked="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   />
-  <div class="modal">
+  <div class="modal" @click.self="closeModal">
     <div class="modal-box">
       <h3 class="font-bold text-base">
         <slot name="title" />
@@ -21,8 +21,7 @@
       </div>
 
       <div class="modal-action">
-        <button class="btn" @click="$emit('update:modelValue', false)">Lol</button>
-        <label :for="id" class="btn" v-if="showCloseButton">{{ closeButtonLabel }}</label>
+        <button class="btn" @click="closeModal" v-if="showCloseButton">{{ closeButtonLabel }}</button>
         <slot name="actions" />
       </div>
     </div>
@@ -36,7 +35,11 @@
     modelValue: { type: Boolean, default: false },
   });
 
-  defineEmits(['update:modelValue']);
+  const emit = defineEmits(['update:modelValue']);
 
   const id = ref<string>(Math.random().toString().substring(2));
+
+  function closeModal() {
+    emit('update:modelValue', false);
+  }
 </script>

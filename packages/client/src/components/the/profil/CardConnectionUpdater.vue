@@ -24,70 +24,37 @@
           </template>
         </UiCardBlock>
       </div>
-
-      <UiModal v-model="totoIsOpen" showCloseButton>
-        <template #title>Coucou</template>
-        <template #description>Comment ça va</template>
-        <template #content>NTR</template>
-        <template #actions>
-          <button class="btn btn-primary">Créer</button>
-        </template>
-      </UiModal>
-
-      <button class="btn btn-primary" @click="totoIsOpen = true">MODAL</button>
     </template>
 
     <template #actions>
-      <label
-        for="profil__connection__save"
-        class="btn btn-primary btn-wide modal-button"
-        :class="{ 'btn-disabled': !canSave }"
-        >Sauvegarder</label
-      >
-
-      <input type="checkbox" id="profil__connection__save" class="modal-toggle" v-model="modalSaveOpen" />
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-base">Hop hop hop, pas si vite !</h3>
-          <p class="py-4">
-            Vous ne pensiez pas que ce serait si facile quand même ? Il va nous falloir votre mot de passe actuel afin
-            de valider vos modifications ! 😀
-          </p>
+      <button class="btn btn-primary btn-wide" :disabled="!canSave" @click="togglePasswordModal">Sauvegarder</button>
+      <UiModal v-model="passwordModalIsOpen" showCloseButton closeButtonLabel="Annuler">
+        <template #title>Hop hop hop, pas si vite !</template>
+        <template #description>
+          Vous ne pensiez pas que ce serait si facile quand même ? Il va nous falloir votre mot de passe actuel afin de
+          valider vos modifications ! 😀
+        </template>
+        <template #content>
           <InputsPassword
             v-model:password="currentPassword"
             label="Mot de passe actuel"
             placeholder="Mot de passe actuel"
           />
-          <div class="modal-action">
-            <label for="profil__connection__save" class="btn">Annuler</label>
-            <label
-              for="profil__connection__save"
-              class="btn btn-primary"
-              :class="{ 'btn-disabled': !currentPassword }"
-              @click.prevent="save"
-              >Valider</label
-            >
-          </div>
-        </div>
-      </div>
+        </template>
+        <template #actions>
+          <button class="btn btn-primary" @click="save" :disabled="!currentPassword">Valider</button>
+        </template>
+      </UiModal>
 
-      <input type="checkbox" id="profil__connection__ok" class="modal-toggle" v-model="modalOkOpen" />
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-base">C'est tout bon !</h3>
-          <p class="py-4 text-success font-medium">Vos informations de connexion ont bien été modifiées 👌</p>
-          <div class="modal-action">
-            <label for="profil__connection__ok" class="btn btn-primary">Ok</label>
-          </div>
-        </div>
-      </div>
+      <UiModal v-model="confirmationModalIsOpen" showCloseButton>
+        <template #title>C'est tout bon !</template>
+        <template #description>Vos informations de connexion ont bien été modifiées 👌</template>
+      </UiModal>
     </template>
   </UiCard>
 </template>
 
 <script setup lang="ts">
-  const totoIsOpen = ref(false);
-
   const email = ref('julien.dubois@gmail.com');
   const newEmail = ref(email.value);
   const emailValid = ref(true);
@@ -96,8 +63,8 @@
   const newPassword = ref('');
   const passwordIsValid = ref(false);
 
-  const modalSaveOpen = ref(false);
-  const modalOkOpen = ref(false);
+  const passwordModalIsOpen = ref(false);
+  const confirmationModalIsOpen = ref(false);
   const saved = ref(false);
 
   const emailsOK = computed(() => email.value === newEmail.value || emailValid.value);
@@ -105,9 +72,17 @@
   const hasChanges = computed(() => newPassword.value !== '' || email.value !== newEmail.value);
   const canSave = computed(() => emailsOK.value && passwordsOK.value && hasChanges.value);
 
+  function togglePasswordModal() {
+    passwordModalIsOpen.value = !passwordModalIsOpen.value;
+  }
+
+  function toggleConfirmationModal() {
+    confirmationModalIsOpen.value = !confirmationModalIsOpen.value;
+  }
+
   function save() {
     saved.value = true;
-    modalSaveOpen.value = false;
-    modalOkOpen.value = true;
+    togglePasswordModal();
+    toggleConfirmationModal();
   }
 </script>

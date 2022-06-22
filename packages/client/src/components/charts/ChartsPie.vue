@@ -3,7 +3,7 @@
     <!-- Chart Container -->
     <div class="relative h-32 w-32 flex items-center justify-center">
       <slot name="icon" />
-      <canvas class="absolute h-32 w-32" :id="id"></canvas>
+      <canvas class="absolute h-32 w-32" :id="id" ref="canvasRef"></canvas>
     </div>
     <!-- Legend -->
     <div class="pl-4" v-if="displayLegend">
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-  import { Chart } from 'chart.js';
+  import * as Chartjs from 'chart.js';
 
   const props = defineProps({
     values: { type: Array, default: [] },
@@ -27,7 +27,8 @@
     displayLegend: { type: Boolean, default: true },
   });
 
-  const id = ref<string>(Math.random().toString().substring(2));
+  const id = ref<string>('PIE-' + Math.random().toString().substring(2));
+  const canvasRef = ref(null);
   const data = {
     labels: props.labels,
     datasets: [
@@ -60,9 +61,13 @@
     },
   };
   const type = 'doughnut';
-  const chart = ref(null);
+  const chart = shallowRef(null);
 
   onMounted(() => {
-    chart.value = new Chart(id.value, { type, data, options });
+    chart.value = new Chartjs.Chart(canvasRef.value, { type, data, options });
+  });
+
+  onBeforeUnmount(() => {
+    chart.value.destroy();
   });
 </script>
