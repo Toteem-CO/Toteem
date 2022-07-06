@@ -18,11 +18,14 @@
           <ChevronDownIcon class="w-5 h-5" />
           <IconsProfil class="h-12 w-12" />
         </label>
-        <div tabindex="0" class="dropdown-content card card-compact bg-base-100 shadow-lg mt-4 w-56">
+        <div tabindex="0" class="dropdown-content card card-compact bg-base-100 shadow-lg mt-4 w-60">
           <div class="card-body">
             <ul class="menu menu-compact rounded-box p-1">
               <li>
                 <NuxtLink :to="profilUrl"><UserIcon class="w-5 h-5" />Profil</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink :to="companyUrl"><OfficeBuildingIcon class="w-5 h-5" />Espace entreprise</NuxtLink>
               </li>
               <li>
                 <a @click="disconnect()"> <LogoutIcon class="w-5 h-5" />Déconnexion </a>
@@ -49,13 +52,18 @@
 
   const firstName = computed(() => currentUser.value.firstName);
 
-  //onst profilUrl = useUrls().PROFIL;
-
-  const { PROFIL: profilUrl } = useUrls().value;
+  const { PROFIL: profilUrl, COMPANY_INDEX: companyUrl } = useUrls().value;
 </script>
 
 <script lang="ts">
-  import { SupportIcon, BellIcon, ChevronDownIcon, UserIcon, LogoutIcon } from '@heroicons/vue/outline';
+  import {
+    SupportIcon,
+    BellIcon,
+    ChevronDownIcon,
+    UserIcon,
+    LogoutIcon,
+    OfficeBuildingIcon,
+  } from '@heroicons/vue/outline';
   import { useUsersStore } from '~/stores/users';
   import { useCurrentUser } from '../../composables/stores/users';
 

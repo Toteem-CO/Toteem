@@ -1,6 +1,6 @@
 <template>
   <div class="card shadow-xl">
-    <div class="card-body p-0">
+    <div class="card-body p-0 bg-base-100">
       <h2 class="card-title font-bold text-base bg-info p-6" v-if="hasTitle">
         <slot name="title" />
       </h2>

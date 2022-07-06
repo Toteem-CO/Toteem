@@ -38,6 +38,6 @@
 
 <script setup lang="ts">
   useHead({
-    titleTemplate: (title) => `${title} - Espace Personnel`,
+    titleTemplate: (title) => `${title} - Espace Entreprise`,
   });
 </script>

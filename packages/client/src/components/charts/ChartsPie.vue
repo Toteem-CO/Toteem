@@ -1,16 +1,16 @@
 <template>
-  <div class="flex items-center justify-start">
+  <div class="flex items-center justify-start" :class="{ 'flex-col': bottomLegend }">
     <!-- Chart Container -->
-    <div class="relative h-32 w-32 flex items-center justify-center">
+    <div class="relative h-32 w-32 min-h-32 min-w-32 flex items-center justify-center">
       <slot name="icon" />
       <canvas class="absolute h-32 w-32" :id="id" ref="canvasRef"></canvas>
     </div>
     <!-- Legend -->
-    <div class="pl-4" v-if="displayLegend">
+    <div :class="{ 'pl-4': !bottomLegend, 'pt-4': bottomLegend }" v-if="displayLegend">
       <div class="flex items-center py-1" v-for="(label, index) in labels">
         <div class="h-4 w-6 rounded-md mr-2" :style="`background-color: ${colors[index]}`"></div>
         <div>
-          <span class="text-base font-semibold">{{ values[index] }} €</span> {{ label }}
+          <span class="text-base font-semibold">{{ values[index].toLocaleString() }} €</span> {{ label }}
         </div>
       </div>
     </div>
@@ -25,6 +25,8 @@
     colors: { type: Array, default: [] },
     labels: { type: Array, default: [] },
     displayLegend: { type: Boolean, default: true },
+    bottomLegend: { type: Boolean, default: false },
+    compact: { type: Boolean, default: false },
   });
 
   const id = ref<string>('PIE-' + Math.random().toString().substring(2));
@@ -46,10 +48,18 @@
     plugins: {
       tooltip: {
         displayColors: false,
-        padding: 10,
-        boxPadding: 5,
+        padding: props.compact ? 5 : 10,
+        boxPadding: props.compact ? 2 : 5,
+        bodyAlign: 'center',
         callbacks: {
-          label: (ctx) => `${ctx.label} : ${ctx.parsed.toLocaleString('fr-FR')} €`,
+          ...(props.compact
+            ? {
+                beforeLabel: (ctx) => `${ctx.label} :`,
+                label: (ctx) => `${ctx.parsed.toLocaleString('fr-FR')} €`,
+              }
+            : {
+                label: (ctx) => `${ctx.label} : ${ctx.parsed.toLocaleString('fr-FR')} €`,
+              }),
         },
       },
       legend: {
