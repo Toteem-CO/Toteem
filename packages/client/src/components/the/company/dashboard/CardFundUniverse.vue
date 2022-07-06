@@ -12,12 +12,31 @@
         <template #body>
           <UiTableRow v-for="fund in funds">
             <UiTableCell>{{ fund.project }}</UiTableCell>
-            <UiTableCell class="text-primary font-semibold underline">{{ fund.name }}</UiTableCell>
+            <UiTableCell>
+              <span class="text-primary font-bold underline">{{ fund.name }}</span>
+            </UiTableCell>
             <UiTableCell>{{ fund.theme }}</UiTableCell>
-            <UiTableCell>{{ fund.risk }}</UiTableCell>
-            <UiTableCell>{{ fund.value }}</UiTableCell>
-            <UiTableCell>{{ fund.performance }}</UiTableCell>
-            <UiTableCell>{{ fund.total }}</UiTableCell>
+            <UiTableCell>
+              <div
+                class="badge badge-sm"
+                :class="{
+                  'badge-success': fund.risk < 4,
+                  'badge-warning': fund.risk < 6 && fund.risk >= 4,
+                  'badge-error': fund.risk >= 6,
+                }"
+              >
+                {{ fund.risk }} / 7
+              </div>
+            </UiTableCell>
+            <UiTableCell>{{ fund.value }} €</UiTableCell>
+            <UiTableCell>
+              <span :class="`text-${fund.performance < 0 ? 'error' : 'success'}`" class="font-bold"
+                >{{ fund.performance < 0 ? '-' : '+' }} {{ fund.performance }} %</span
+              >
+            </UiTableCell>
+            <UiTableCell>
+              <span class="font-bold text-primary">{{ fund.total.toLocaleString() }} €</span>
+            </UiTableCell>
           </UiTableRow>
         </template>
       </UiTable>

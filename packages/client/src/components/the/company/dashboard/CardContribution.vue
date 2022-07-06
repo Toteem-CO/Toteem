@@ -1,6 +1,6 @@
 <template>
   <UiCard>
-    <template #title><IconsGift class="h-10 w-10 mr-2" /> Abondement</template>
+    <template #title><IconsGift class="h-10 w-10 mr-2" />Votre abondement</template>
     <template #content>
       <ChartsBar
         :values="values"

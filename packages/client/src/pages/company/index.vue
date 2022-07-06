@@ -19,6 +19,9 @@
 
     <!-- Fund Universe -->
     <TheCompanyDashboardCardFundUniverse class="mb-8" />
+
+    <!-- Goals -->
+    <TheCompanyDashboardCardGoals />
   </div>
 </template>
 

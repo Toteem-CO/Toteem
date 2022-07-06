@@ -1,7 +1,7 @@
 <template>
   <UiCard>
     <!-- Title -->
-    <template #title><IconsWallet class="h-10 w-10 mr-2" />Répartition des encours</template>
+    <template #title><IconsWallet class="h-10 w-10 mr-2" />Répartition de vos encours</template>
     <!-- Content -->
     <template #content>
       <div class="flex items-start">
