@@ -48,7 +48,7 @@
         </li>
       </ul>
     </template> -->
-
+<!-- 
     <ul class="menu p-1 py-5 px-4 rounded-box flex-1">
       <li>
         <NuxtLink :to="`/?view=${$route.query.view}`" :class="isActive('index') ? 'active' : ''">
@@ -80,46 +80,7 @@
           <CogIcon aria-hidden="true" class="w-5 h-5" />Mon dispositif
         </NuxtLink>
       </li>
-    </ul>
+    </ul> -->
   </section>
 </template>
 
-<script>
-  import {
-    HomeIcon,
-    AdjustmentsIcon,
-    CalendarIcon,
-    CogIcon,
-    ClipboardListIcon,
-    UsersIcon,
-    HeartIcon,
-  } from '@heroicons/vue/outline';
-  import { useUsersStore } from '~/stores/users';
-
-  export default {
-    components: { HomeIcon, AdjustmentsIcon, CalendarIcon, CogIcon, ClipboardListIcon, UsersIcon, HeartIcon },
-
-    data() {
-      return {
-        store: useUsersStore(),
-      };
-    },
-
-    computed: {
-      adminMode() {
-        return this.store.getCurrentUserView === 'admin';
-      },
-    },
-
-    methods: {
-      isActive(name) {
-        return this.$route.name === name;
-      },
-    },
-  };
-</script>
-
-<style scoped>
-  .shared-left-menu-component {
-  }
-</style>

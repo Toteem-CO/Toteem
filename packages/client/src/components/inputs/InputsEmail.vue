@@ -15,14 +15,14 @@
   <ul class="mt-4 list-none" v-if="showRequirements">
     <li class="flex items-center">
       Email valide
-      <XIcon class="ml-2 h-6 text-error" v-if="!isValid" />
+      <XMarkIcon class="ml-2 h-6 text-error" v-if="!isValid" />
       <CheckIcon class="ml-2 h-6 text-success" v-else />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-  import { XIcon, CheckIcon } from '@heroicons/vue/outline';
+  import { XMarkIcon, CheckIcon } from '@heroicons/vue/24/outline';
   import { __EmailRegex } from '@toteem/shared/constants/index.js';
 
   const props = defineProps({

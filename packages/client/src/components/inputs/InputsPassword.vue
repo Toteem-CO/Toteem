@@ -28,19 +28,19 @@
   <ul class="mt-4 list-none" v-if="showRequirements">
     <li class="flex items-center" v-for="group in __PasswordRegexGroups">
       {{ group.description }}
-      <XIcon class="ml-2 h-6 text-error" v-if="!regexGroupMatches(group.regex)" />
+      <XMarkIcon class="ml-2 h-6 text-error" v-if="!regexGroupMatches(group.regex)" />
       <CheckIcon class="ml-2 h-6 text-success" v-else />
     </li>
     <li class="flex items-center" v-if="requireConfirmation">
       Confirmation du mot de passe
-      <XIcon class="ml-2 h-6 text-error" v-if="!passwordConfirmed" />
+      <XMarkIcon class="ml-2 h-6 text-error" v-if="!passwordConfirmed" />
       <CheckIcon class="ml-2 h-6 text-success" v-else />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-  import { XIcon, CheckIcon } from '@heroicons/vue/outline';
+  import { XMarkIcon, CheckIcon } from '@heroicons/vue/24/outline';
   import { __PasswordRegex, __PasswordRegexGroups } from '@toteem/shared/constants/index.js';
 
   const props = defineProps({
