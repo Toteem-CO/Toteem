@@ -1,20 +1,12 @@
 html {
   font-family: 'Inter', sans-serif;
-
-  body {
-    color: red;
-
-    div {
-      background: black;
-    }
-  }
 }
 
-@supports (font-variation-settings: normal) {
+/* @supports (font-variation-settings: normal) {
   html {
     font-family: 'Inter var', sans-serif;
   }
-}
+} */
 
 body {
   @apply bg-base-200;

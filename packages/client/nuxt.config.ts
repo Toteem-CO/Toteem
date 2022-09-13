@@ -3,36 +3,27 @@ import { defineNuxtConfig } from 'nuxt';
 export default defineNuxtConfig({
   ssr: false,
   srcDir: 'src/',
-  css: ['~/assets/styles/tailwind.scss', '~/assets/styles/global.scss'],
+  css: ['~/assets/styles/global.scss', 'vuetify/lib/styles/main.sass'],
   build: {
-    transpile: ['chart.js'],
-/*     postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    }, */
+    transpile: ['chart.js', 'vuetify'],
   },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-    },
-  },
+  modules: ['@nuxtjs/tailwindcss'],
   imports: {
     dirs: [
       'composables/**'
     ]
   },
   vite: {
-    logLevel: 'info',
+    logLevel: 'warn',
     optimizeDeps: {
       include: [
         'vue',
         'chart.js',
         'axios',
       ],
+    },
+    define: {
+      'process.env.DEBUG': false,
     },
   },
   runtimeConfig: {

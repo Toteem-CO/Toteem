@@ -1,5 +1,8 @@
 <template>
   <div>
+    <v-btn flat>
+      Normal
+    </v-btn>
     <SharedContentTitle>
       <template #title>Tableau de bord</template>
       <template #subtitle>Bonjour Julien, bienvenue sur l'espace entreprise de Company500 ! 🎉</template>

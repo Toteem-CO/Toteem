@@ -1,9 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
-  content: {
-    files: ['./src/components/**/*.{vue,js}', './src/layouts/**/*.vue', './src/pages/**/*.vue', './src/app.vue'],
-  },
   theme: {
     extend: {
       fontFamily: {
