@@ -1,19 +1,12 @@
-import { defineNuxtConfig } from 'nuxt';
-
 export default defineNuxtConfig({
   ssr: false,
+  //rootDir: 'packages/client',
+  workspaceDir: 'packages/client',
   srcDir: 'src/',
-  css: ['~/assets/styles/tailwind.scss', '~/assets/styles/global.scss'],
+  css: ['~/assets/styles/global.scss'],
+  modules: ['@nuxtjs/tailwindcss'],
   build: {
     transpile: ['chart.js'],
-/*     postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    }, */
   },
   postcss: {
     plugins: {
@@ -43,5 +36,10 @@ export default defineNuxtConfig({
   meta: {
     title: 'Toteem',
     link: [{ rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.png' }],
-  }
+  },
+  tailwindcss: {
+    cssPath: '~/assets/styles/tailwind.scss',
+    configPath: 'tailwind.config.js',
+    injectPosition: 'first',
+  },
 });

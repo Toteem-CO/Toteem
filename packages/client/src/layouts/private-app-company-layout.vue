@@ -13,7 +13,7 @@
           justify-center
         "
       >
-        <NuxtLink :to="`/?view=${$route.query.view}`">
+        <NuxtLink :to="`/company`">
           <img class="w-32 inline-block" src="~/assets/images/logo.svg" alt="Toteem Logo" />
         </NuxtLink>
       </div>
@@ -21,12 +21,12 @@
 
     <!-- LEFT MENU -->
     <section class="col-start-1 row-start-2 col-span-1 row-span-1 bg-base-100 z-30">
-      <SharedLeftMenu />
+      <SharedLeftMenu company />
     </section>
 
     <!-- TOP HEADER -->
     <section class="col-start-2 row-start-1 col-span-1 row-span-1 z-40">
-      <SharedTopMenu />
+      <SharedTopMenu company />
     </section>
 
     <!-- CONTENT -->

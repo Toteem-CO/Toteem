@@ -13,7 +13,7 @@
           justify-center
         "
       >
-        <NuxtLink :to="`/?view=${$route.query.view}`">
+        <NuxtLink :to="`/user`">
           <img class="w-32 inline-block" src="~/assets/images/logo.svg" alt="Toteem Logo" />
         </NuxtLink>
       </div>
