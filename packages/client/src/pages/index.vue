@@ -1,5 +1,6 @@
 <script setup lang="ts">
   definePageMeta({
-    middleware: () => navigateTo('/user'),
+    layout: 'private-app-layout',
+    middleware: () => navigateTo('/user', { replace: true }),
   });
 </script>

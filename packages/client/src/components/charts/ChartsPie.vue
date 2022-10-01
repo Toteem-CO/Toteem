@@ -74,10 +74,14 @@
   const chart = shallowRef(null);
 
   onMounted(() => {
-    chart.value = new Chartjs.Chart(canvasRef.value, { type, data, options });
+    if (canvasRef.value) {
+      chart.value = new Chartjs.Chart(canvasRef.value, { type, data, options });
+    }
   });
 
   onBeforeUnmount(() => {
-    chart.value.destroy();
+    if (chart.value && chart.value.destroy) {
+      chart.value.destroy();
+    }
   });
 </script>
