@@ -8,21 +8,22 @@
   "description": "Toteem",
   "author": "Toteem CO",
   "engines": {
-    "node": "18.9.0",
+    "node": "18.10.0",
     "pnpm": "7.11.0"
   },
   "scripts": {
-    "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
-    "start": "npm start --workspace=$PACKAGE_NAME",
-    "build": "npm run build --workspace=$PACKAGE_NAME",
+    "test": "pnpm --filter $PACKAGE_NAME --filter =@toteem/shared run test",
+    "start": "pnpm --filter $PACKAGE_NAME run start",
+    "build": "pnpm --filter $PACKAGE_NAME run build",
     "clean:modules": "rm -rf node_modules ./packages/api/node_modules ./packages/client/node_modules ./packages/shared/node_modules",
-    "clean:client": "rm -rf ./packages/client/.nuxt ./packages/client/.output",
-    "clean:everything": "npm run clean:modules && npm run clean:client",
-    "dev:api": "yarn workspace @toteem/api run dev",
+    "clean:client": "rm -rf ./packages/client/.nuxt ./packages/client/.output ./packages/client/dist",
+    "clean:everything": "pnpm run clean:modules && pnpm run clean:client",
+    "clean:apocalypse": "pnpm run clean:everything && rm -rf pnpm-lock.yaml",
+    "dev:api": "pnpm --filter @toteem/api run dev",
     "dev:client": "pnpm --filter @toteem/client dev",
-    "build:api": "yarn workspace @toteem/api run build",
-    "build:client": "npm run build --workspace=@toteem/client",
-    "start:api": "yarn workspace @toteem/api run start",
-    "start:client": "npm run start --workspace=@toteem/client"
+    "build:api": "pnpm --filter @toteem/api run build",
+    "build:client": "pnpm --filter @toteem/client run build",
+    "start:api": "pnpm --filter @toteem/api run start",
+    "start:client": "pnpm --filter @toteem/client run start"
   }
 }
