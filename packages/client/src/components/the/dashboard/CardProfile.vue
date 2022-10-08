@@ -23,7 +23,7 @@
           <h3 class="font-bold text-base mb-4">Centres d'intérêts</h3>
           <div class="flex items-center justify-between">
             <div class="flex flex-col items-center justify-center">
-              <IconsBadminton class="h-16 w-16 mb-2" /><span class="text-sm font-bold">Sport</span>
+              <IconsSolidarity class="h-16 w-16 mb-2" /><span class="text-sm font-bold">Social & Solidarité</span>
             </div>
             <div class="flex flex-col items-center justify-center">
               <IconsEcology class="h-16 w-16 mb-2" /><span class="text-sm font-bold">Environnement</span>
@@ -37,5 +37,3 @@
     </template>
   </UiCard>
 </template>
-
-<script setup lang="ts"></script>
