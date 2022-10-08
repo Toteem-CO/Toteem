@@ -27,7 +27,7 @@
                 <NuxtLink :to="companyUrl"><BuildingOfficeIcon class="w-5 h-5" />Espace entreprise</NuxtLink>
               </li>
               <li v-if="company">
-                <NuxtLink to="/user"><UserIcon class="w-5 h-5" />Esapce personnel</NuxtLink>
+                <NuxtLink to="/user"><UserIcon class="w-5 h-5" />Espace personnel</NuxtLink>
               </li>
               <li>
                 <a @click="disconnect()"> <ArrowRightOnRectangleIcon class="w-5 h-5" />Déconnexion </a>

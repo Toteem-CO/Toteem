@@ -1,6 +1,6 @@
 <template>
   <UiCard>
-    <template #title><IconsGift class="h-10 w-10 mr-2" />Votre abondement</template>
+    <template #title><IconsGift class="h-10 w-10 mr-2" />Abondement</template>
     <template #content>
       <ChartsBar
         :values="values"
@@ -16,13 +16,14 @@
           <span class="text-[#B3AFE3]">Restant : </span>{{ remaining }} €
         </div>
       </div>
+      <div class="text-xs italic text-gray-700 text-center pt-2">Les compteurs seront remis à zéro le 01/01/2023</div>
     </template>
   </UiCard>
 </template>
 
 <script setup lang="ts">
-  const values = [32000];
-  const remainings = [18000];
+  const values = [120000];
+  const remainings = [80000];
   const valuesColors = ['#5a4fcf'];
   const remainingsColors = ['#B3AFE3'];
   const valuesLabels = ['Versé'];

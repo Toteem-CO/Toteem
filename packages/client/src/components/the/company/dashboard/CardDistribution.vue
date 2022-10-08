@@ -1,7 +1,7 @@
 <template>
   <UiCard>
     <!-- Title -->
-    <template #title><IconsWallet class="h-10 w-10 mr-2" />Répartition de vos encours</template>
+    <template #title><IconsWallet class="h-10 w-10 mr-2" />Répartition des encours</template>
     <!-- Content -->
     <template #content>
       <div class="flex items-start">
@@ -48,19 +48,19 @@
 </template>
 
 <script setup lang="ts">
-  const values = [1300000, 1000000, 800000, 600000, 300000];
+  const values = [130000, 100000, 80000, 60000, 30000];
   const colors = ['#5A4FCF', '#35A953', '#F8870D', '#B3AFE3', '#FEB44A'];
   const labels = ['Participation', 'Intéressement', 'Performance', 'Abondement', 'Versements Volontaires'];
 
-  const values2 = [2500000, 1500000];
+  const values2 = [250000, 150000];
   const colors2 = ['#5A4FCF', '#B3AFE3'];
   const labels2 = ['Projets Personnels', 'Retraite'];
 
-  const values3 = [1300000, 1000000, 900000, 800000];
+  const values3 = [130000, 100000, 90000, 80000];
   const colors3 = ['#5A4FCF', '#35A953', '#F8870D', '#B3AFE3'];
   const labels3 = ['Innovation', 'Sport', 'Environnement', 'Immobilier'];
 
-  const values4 = [1300000, 1000000, 800000, 600000, 300000];
+  const values4 = [130000, 100000, 80000, 60000, 30000];
   const colors4 = ['#5A4FCF', '#35A953', '#F8870D', '#B3AFE3', '#FEB44A'];
   const labels4 = ['Fond 1', 'Fond 2', 'Fond 3', 'Fond 4', 'Fond 5'];
 </script>

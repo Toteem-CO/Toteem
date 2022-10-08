@@ -4,10 +4,6 @@
   "private": true,
   "description": "Toteem Shared",
   "author": "Toteem CO",
-  "engines": {
-    "node": "17.9.1",
-    "pnpm": "7.8.0"
-  },
   "type": "module",
   "scripts": {
     "test": "npm run test:mocha && npm run test:eslint && npm run test:prettier",

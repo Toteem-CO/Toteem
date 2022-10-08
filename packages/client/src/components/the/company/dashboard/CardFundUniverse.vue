@@ -1,6 +1,6 @@
 <template>
   <UiCard>
-    <template #title><IconsFund class="h-10 w-10 mr-2" />Votre univers d'investissement</template>
+    <template #title><IconsFund class="h-10 w-10 mr-2" />Univers d'investissement</template>
     <template #content>
       <UiTable>
         <template #head>
@@ -55,7 +55,7 @@
       risk: 5,
       value: 40,
       performance: 5,
-      total: 1300000,
+      total: 130000,
     },
     {
       project: 'Projet Personnel',
@@ -64,7 +64,7 @@
       risk: 6,
       value: 70,
       performance: 8,
-      total: 1000000,
+      total: 100000,
     },
     {
       project: 'Projet Personnel',
@@ -73,7 +73,7 @@
       risk: 3,
       value: 20,
       performance: 2,
-      total: 800000,
+      total: 80000,
     },
     {
       project: 'Retraite',
@@ -82,7 +82,7 @@
       risk: 2,
       value: 150,
       performance: 1,
-      total: 600000,
+      total: 60000,
     },
     {
       project: 'Retraite',
@@ -91,7 +91,7 @@
       risk: 3,
       value: 90,
       performance: 2,
-      total: 300000,
+      total: 30000,
     },
   ];
 </script>

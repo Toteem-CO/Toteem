@@ -7,10 +7,6 @@
   ],
   "description": "Toteem",
   "author": "Toteem CO",
-  "engines": {
-    "node": "17.9.1",
-    "pnpm": "7.8.0"
-  },
   "scripts": {
     "test": "npm test --workspace=$PACKAGE_NAME --workspace=@toteem/shared",
     "start": "npm start --workspace=$PACKAGE_NAME",

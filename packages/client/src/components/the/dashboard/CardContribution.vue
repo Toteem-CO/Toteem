@@ -16,13 +16,14 @@
           <span class="text-[#B3AFE3]">Restant : </span>{{ remaining }} €
         </div>
       </div>
+      <div class="text-xs italic text-gray-700 text-center pt-2">Les compteurs seront remis à zéro le 01/01/2023</div>
     </template>
   </UiCard>
 </template>
 
 <script setup lang="ts">
-  const values = [8000];
-  const remainings = [2000];
+  const values = [4000];
+  const remainings = [1000];
   const valuesColors = ['#5a4fcf'];
   const remainingsColors = ['#B3AFE3'];
   const valuesLabels = ['Versé'];
