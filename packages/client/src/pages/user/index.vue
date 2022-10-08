@@ -1,7 +1,7 @@
 <template>
   <div>
     <SharedContentTitle>
-      <template #title>Tableau de bord</template>
+      <template #title>{{ $t('user_index.title') }}</template>
       <template #subtitle>Bonjour Julien, bienvenue sur votre espace ! 🎉</template>
     </SharedContentTitle>
 

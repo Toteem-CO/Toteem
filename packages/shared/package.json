@@ -6,7 +6,7 @@
   "author": "Toteem CO",
   "engines": {
     "node": "18.10.0",
-    "pnpm": "7.11.0"
+    "pnpm": "7.13.2"
   },
   "type": "module",
   "scripts": {
