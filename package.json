@@ -21,7 +21,7 @@
     "dev:api": "yarn workspace @toteem/api run dev",
     "dev:client": "pnpm --filter @toteem/client dev",
     "build:api": "yarn workspace @toteem/api run build",
-    "build:client": "npm run build --workspace=@toteem/client",
+    "build:client": "pnpm --filter @toteem/client run build",
     "start:api": "yarn workspace @toteem/api run start",
     "start:client": "npm run start --workspace=@toteem/client"
   }

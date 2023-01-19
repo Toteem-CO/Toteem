@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
+  prefix: 'lele',
   theme: {
     extend: {
       fontFamily: {

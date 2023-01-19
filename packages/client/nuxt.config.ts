@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt';
 export default defineNuxtConfig({
   ssr: false,
   srcDir: 'src/',
-  css: ['~/assets/styles/global.scss', 'vuetify/lib/styles/main.sass'],
+  css: ['~/assets/styles/global.scss'],
   build: {
     transpile: ['chart.js', 'vuetify'],
   },
